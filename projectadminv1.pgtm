@@ -1,4 +1,4 @@
-<Project version="20.5.0.4" edition="pro" localizationFileName="C:\Program Files (x86)\SQL Maestro Group\PHP Generator for MySQL Professional\lang.en.php" phpDriver="1" outputPath="D:\ms4w\apps\yasri.sch.id.guru" copySystemFiles="true" generateModifiedDataOnly="true" outputFilesExtension="php" colorSchemeName="cerulean-compact">
+<Project version="20.5.0.4" edition="pro" localizationFileName="C:\Program Files (x86)\SQL Maestro Group\PHP Generator for MySQL Professional\lang.en.php" phpDriver="1" outputPath="D:\ms4w\apps\yasri.sch.id.admin" copySystemFiles="true" generateModifiedDataOnly="true" outputFilesExtension="php" colorSchemeName="lumen">
   <ConnectionOptions host="localhost" port="3306" login="root" password="R*OJ[/GU^&gt;`~" database="master_yasridb" client_encoding="utf8" allow_old_password="false">
     <ssh_secure secure="false" port="22" authentication_mode="0"/>
     <http_tunnel tunneling="false" url="">
