@@ -15,11 +15,11 @@ include_once dirname(__FILE__) . '/' . 'database_engine/mysql_engine.php';
 $dataSourceRecordPermissions = array();
 
 $tableCaptions = array('kelas' => 'Kelas',
+'ma' => 'Mata Ajaran',
 'mengajar' => 'Mengajar',
 'silabus' => 'Silabus',
 'siswa' => 'Siswa',
 'ta' => 'Tahun Ajaran',
-'ma' => 'Mata Ajaran',
 'pa' => 'Program Keahlian',
 'admin_users' => 'Admin',
 'guru_users' => 'Guru/Staf',

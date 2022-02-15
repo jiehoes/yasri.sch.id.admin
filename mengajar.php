@@ -80,9 +80,9 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'pel', 'pel', 'Pel'),
-                new FilterColumn($this->dataset, 'ajar_id', 'ajar_id', 'Ajar Id'),
+                new FilterColumn($this->dataset, 'ajar_id', 'ajar_id', 'ID'),
                 new FilterColumn($this->dataset, 'guru_id', 'guru_id', 'Guru Id'),
+                new FilterColumn($this->dataset, 'pel', 'pel', 'Pel'),
                 new FilterColumn($this->dataset, 'kelas_id', 'kelas_id', 'Kelas Id')
             );
         }
@@ -90,9 +90,9 @@
         protected function setupQuickFilter(QuickFilter $quickFilter, FixedKeysArray $columns)
         {
             $quickFilter
-                ->addColumn($columns['pel'])
                 ->addColumn($columns['ajar_id'])
                 ->addColumn($columns['guru_id'])
+                ->addColumn($columns['pel'])
                 ->addColumn($columns['kelas_id']);
         }
     
@@ -104,31 +104,6 @@
     
         protected function setupFilterBuilder(FilterBuilder $filterBuilder, FixedKeysArray $columns)
         {
-            $main_editor = new TextEdit('pel_edit');
-            $main_editor->SetMaxLength(30);
-            
-            $filterBuilder->addColumn(
-                $columns['pel'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
             $main_editor = new TextEdit('ajar_id_edit');
             
             $filterBuilder->addColumn(
@@ -160,6 +135,31 @@
                     FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
                     FilterConditionOperator::IS_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('pel_edit');
+            $main_editor->SetMaxLength(30);
+            
+            $filterBuilder->addColumn(
+                $columns['pel'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
+                    FilterConditionOperator::BEGINS_WITH => $main_editor,
+                    FilterConditionOperator::ENDS_WITH => $main_editor,
+                    FilterConditionOperator::IS_LIKE => $main_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -232,19 +232,9 @@
         protected function AddFieldColumns(Grid $grid, $withDetails = true)
         {
             //
-            // View column for pel field
-            //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
-            //
             // View column for ajar_id field
             //
-            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'Ajar Id', $this->dataset);
+            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -262,6 +252,16 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for pel field
+            //
+            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column->SetOrderable(true);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
@@ -281,16 +281,9 @@
         protected function AddSingleRecordViewColumns(Grid $grid)
         {
             //
-            // View column for pel field
-            //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
             // View column for ajar_id field
             //
-            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'Ajar Id', $this->dataset);
+            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -308,6 +301,13 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
+            // View column for pel field
+            //
+            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
             // View column for kelas_id field
             //
             $column = new TextViewColumn('kelas_id', 'kelas_id', 'Kelas Id', $this->dataset);
@@ -318,20 +318,10 @@
         protected function AddEditColumns(Grid $grid)
         {
             //
-            // Edit column for pel field
-            //
-            $editor = new TextEdit('pel_edit');
-            $editor->SetMaxLength(30);
-            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
             // Edit column for ajar_id field
             //
             $editor = new TextEdit('ajar_id_edit');
-            $editColumn = new CustomEditColumn('Ajar Id', 'ajar_id', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('ID', 'ajar_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -344,6 +334,16 @@
             $editColumn = new CustomEditColumn('Guru Id', 'guru_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for pel field
+            //
+            $editor = new TextEdit('pel_edit');
+            $editor->SetMaxLength(30);
+            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
             
@@ -366,20 +366,10 @@
         protected function AddMultiEditColumns(Grid $grid)
         {
             //
-            // Edit column for pel field
-            //
-            $editor = new TextEdit('pel_edit');
-            $editor->SetMaxLength(30);
-            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
             // Edit column for ajar_id field
             //
             $editor = new TextEdit('ajar_id_edit');
-            $editColumn = new CustomEditColumn('Ajar Id', 'ajar_id', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('ID', 'ajar_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -392,6 +382,16 @@
             $editColumn = new CustomEditColumn('Guru Id', 'guru_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for pel field
+            //
+            $editor = new TextEdit('pel_edit');
+            $editor->SetMaxLength(30);
+            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
             
@@ -414,20 +414,10 @@
         protected function AddInsertColumns(Grid $grid)
         {
             //
-            // Edit column for pel field
-            //
-            $editor = new TextEdit('pel_edit');
-            $editor->SetMaxLength(30);
-            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
             // Edit column for ajar_id field
             //
             $editor = new TextEdit('ajar_id_edit');
-            $editColumn = new CustomEditColumn('Ajar Id', 'ajar_id', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('ID', 'ajar_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -440,6 +430,16 @@
             $editColumn = new CustomEditColumn('Guru Id', 'guru_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for pel field
+            //
+            $editor = new TextEdit('pel_edit');
+            $editor->SetMaxLength(30);
+            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
             
@@ -468,16 +468,9 @@
         protected function AddPrintColumns(Grid $grid)
         {
             //
-            // View column for pel field
-            //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for ajar_id field
             //
-            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'Ajar Id', $this->dataset);
+            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -492,6 +485,13 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for pel field
+            //
+            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column->SetOrderable(true);
             $grid->AddPrintColumn($column);
             
             //
@@ -505,16 +505,9 @@
         protected function AddExportColumns(Grid $grid)
         {
             //
-            // View column for pel field
-            //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for ajar_id field
             //
-            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'Ajar Id', $this->dataset);
+            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -529,6 +522,13 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for pel field
+            //
+            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column->SetOrderable(true);
             $grid->AddExportColumn($column);
             
             //
@@ -542,16 +542,9 @@
         private function AddCompareColumns(Grid $grid)
         {
             //
-            // View column for pel field
-            //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
             // View column for ajar_id field
             //
-            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'Ajar Id', $this->dataset);
+            $column = new NumberViewColumn('ajar_id', 'ajar_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -566,6 +559,13 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for pel field
+            //
+            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column->SetOrderable(true);
             $grid->AddCompareColumn($column);
             
             //

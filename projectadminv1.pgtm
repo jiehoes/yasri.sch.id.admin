@@ -115,15 +115,86 @@
         <RecordPermissions useRecordPermissions="false"/>
         <PartitionNavigators/>
       </Page>
+      <Page type="table" tableName="ma" numberByDataSource="0" fileName="ma" caption="Mata Ajaran" shortCaption="Mata Ajaran" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="ma_id" caption="ID" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pelajaran" caption="Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pelajaran" caption="Kode Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="20"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </List>
+          <View>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </View>
+          <Edit>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="kode_pelajaran"/>
+            <Column fieldName="pelajaran"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Print>
+          <Export>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Export>
+          <Compare>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
       <Page type="table" tableName="mengajar" numberByDataSource="0" fileName="mengajar" caption="Mengajar" shortCaption="Mengajar" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="pel" caption="Pel" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="ajar_id" caption="Ajar Id" showColumnFilter="false" selectedFilterOperators="1573119">
+          <ColumnPresentation fieldName="ajar_id" caption="ID" showColumnFilter="false" selectedFilterOperators="1573119">
             <ViewProperties type="text">
               <Format type="number" thousandSeparator=","/>
             </ViewProperties>
@@ -134,6 +205,10 @@
               <Format type="number" thousandSeparator=","/>
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pel" caption="Pel" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="30"/>
           </ColumnPresentation>
           <ColumnPresentation fieldName="kelas_id" caption="Kelas Id" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
@@ -151,27 +226,27 @@
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </List>
           <View>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </View>
           <Edit>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </Edit>
           <Insert>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </Insert>
           <QuickFilter>
@@ -181,33 +256,33 @@
             <Column fieldName="kelas_id"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </Print>
           <Export>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </Export>
           <Compare>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="pel"/>
             <Column fieldName="ajar_id"/>
             <Column fieldName="guru_id"/>
+            <Column fieldName="pel"/>
             <Column fieldName="kelas_id"/>
           </MultiEdit>
         </Columns>
@@ -604,81 +679,6 @@
           <MultiEdit>
             <Column fieldName="ta_id" visible="false"/>
             <Column fieldName="ta"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="false"/>
-        <PartitionNavigators/>
-      </Page>
-      <Page type="table" tableName="ma" numberByDataSource="0" fileName="ma" caption="Mata Ajaran" shortCaption="Mata Ajaran" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="ma_id" caption="ID" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="pelajaran" caption="Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kode_pelajaran" caption="Kode Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="20"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="ma_id"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </List>
-          <View>
-            <Column fieldName="ma_id"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </View>
-          <Edit>
-            <Column fieldName="ma_id" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="ma_id" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="ma_id"/>
-            <Column fieldName="kode_pelajaran"/>
-            <Column fieldName="pelajaran"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="ma_id"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="ma_id"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </Print>
-          <Export>
-            <Column fieldName="ma_id"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </Export>
-          <Compare>
-            <Column fieldName="ma_id" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="ma_id" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="kode_pelajaran"/>
           </MultiEdit>
         </Columns>
         <Details/>
