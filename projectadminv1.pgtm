@@ -2398,7 +2398,7 @@
     </Pages>
     <UserAuthorization type="tableBased" tableName="admin_users" userIdField="user_id" userNameField="user_name" passwordField="user_password" userEmailField="user_email" userTokenField="user_token" userStatusField="user_status" passwordEncryption="MD5" allowUserToChangePassword="true" recoveringPasswordEnabled="true"/>
     <UserGrants enableGuestAccess="false" storageType="table">
-      <UserGrantsStorage userPermsTableName="phpgen_user_perms" userPermsUserId="user_id" userPermsPageName="page_name" userPermsAcl="perm_name"/>
+      <UserGrantsStorage userPermsTableName="admin_user_perms" userPermsUserId="user_id" userPermsPageName="page_name" userPermsAcl="perm_name"/>
     </UserGrants>
     <Header/>
     <Footer/>

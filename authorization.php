@@ -86,7 +86,7 @@ function CreateGrantManager()
     global $tableCaptions;
     global $usersTableInfo;
     
-    $userPermsTableInfo = array('TableName' => 'phpgen_user_perms', 'UserId' => 'user_id', 'PageName' => 'page_name', 'Grant' => 'perm_name');
+    $userPermsTableInfo = array('TableName' => 'admin_user_perms', 'UserId' => 'user_id', 'PageName' => 'page_name', 'Grant' => 'perm_name');
     
     return new TableBasedUserGrantManager(MySqlIConnectionFactory::getInstance(), GetGlobalConnectionOptions(),
         $usersTableInfo, $userPermsTableInfo, $tableCaptions, false);
