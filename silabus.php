@@ -45,13 +45,11 @@
             $this->dataset->addFields(
                 array(
                     new IntegerField('id', true, true, true),
-                    new StringField('pelajaran', true),
-                    new StringField('file', true),
-                    new IntegerField('visit', true),
+                    new IntegerField('ma_id', true),
                     new StringField('ket', true),
                     new StringField('kelas', true),
-                    new StringField('tanggal', true),
-                    new IntegerField('semester')
+                    new IntegerField('semester'),
+                    new BlobField('file')
                 )
             );
         }
@@ -85,13 +83,11 @@
         {
             return array(
                 new FilterColumn($this->dataset, 'id', 'id', 'Id'),
-                new FilterColumn($this->dataset, 'pelajaran', 'pelajaran', 'Pelajaran'),
                 new FilterColumn($this->dataset, 'file', 'file', 'File'),
-                new FilterColumn($this->dataset, 'visit', 'visit', 'Visit'),
                 new FilterColumn($this->dataset, 'ket', 'ket', 'Ket'),
                 new FilterColumn($this->dataset, 'kelas', 'kelas', 'Kelas'),
-                new FilterColumn($this->dataset, 'tanggal', 'tanggal', 'Tanggal'),
-                new FilterColumn($this->dataset, 'semester', 'semester', 'Semester')
+                new FilterColumn($this->dataset, 'semester', 'semester', 'Semester'),
+                new FilterColumn($this->dataset, 'ma_id', 'ma_id', 'Ma Id')
             );
         }
     
@@ -99,13 +95,11 @@
         {
             $quickFilter
                 ->addColumn($columns['id'])
-                ->addColumn($columns['pelajaran'])
                 ->addColumn($columns['file'])
-                ->addColumn($columns['visit'])
                 ->addColumn($columns['ket'])
                 ->addColumn($columns['kelas'])
-                ->addColumn($columns['tanggal'])
-                ->addColumn($columns['semester']);
+                ->addColumn($columns['semester'])
+                ->addColumn($columns['ma_id']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -133,69 +127,12 @@
                 )
             );
             
-            $main_editor = new TextEdit('pelajaran_edit');
-            $main_editor->SetMaxLength(100);
-            
-            $filterBuilder->addColumn(
-                $columns['pelajaran'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
             $main_editor = new TextEdit('file_edit');
             $main_editor->SetMaxLength(50);
             
             $filterBuilder->addColumn(
                 $columns['file'],
                 array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('visit_edit');
-            
-            $filterBuilder->addColumn(
-                $columns['visit'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -250,11 +187,10 @@
                 )
             );
             
-            $main_editor = new TextEdit('tanggal_edit');
-            $main_editor->SetMaxLength(20);
+            $main_editor = new TextEdit('semester_edit');
             
             $filterBuilder->addColumn(
-                $columns['tanggal'],
+                $columns['semester'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -264,21 +200,15 @@
                     FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
                     FilterConditionOperator::IS_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
             );
             
-            $main_editor = new TextEdit('semester_edit');
+            $main_editor = new TextEdit('ma_id_edit');
             
             $filterBuilder->addColumn(
-                $columns['semester'],
+                $columns['ma_id'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -298,14 +228,7 @@
         {
             $actions = $grid->getActions();
             $actions->setCaption($this->GetLocalizerCaptions()->GetMessageString('Actions'));
-            $actions->setPosition(ActionList::POSITION_LEFT);
-            
-            if ($this->GetSecurityInfo()->HasViewGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('View'), OPERATION_VIEW, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
-            }
+            $actions->setPosition(ActionList::POSITION_RIGHT);
             
             if ($this->GetSecurityInfo()->HasEditGrant())
             {
@@ -323,13 +246,6 @@
                 $operation->OnShow->AddListener('ShowDeleteButtonHandler', $this);
                 $operation->SetAdditionalAttribute('data-modal-operation', 'delete');
                 $operation->SetAdditionalAttribute('data-delete-handler-name', $this->GetModalGridDeleteHandler());
-            }
-            
-            if ($this->GetSecurityInfo()->HasAddGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('Copy'), OPERATION_COPY, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
             }
         }
     
@@ -349,34 +265,10 @@
             $grid->AddViewColumn($column);
             
             //
-            // View column for pelajaran field
-            //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
-            //
             // View column for file field
             //
             $column = new TextViewColumn('file', 'file', 'File', $this->dataset);
             $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
-            //
-            // View column for visit field
-            //
-            $column = new NumberViewColumn('visit', 'visit', 'Visit', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
@@ -404,19 +296,22 @@
             $grid->AddViewColumn($column);
             
             //
-            // View column for tanggal field
+            // View column for semester field
             //
-            $column = new TextViewColumn('tanggal', 'tanggal', 'Tanggal', $this->dataset);
+            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
             $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
             
             //
-            // View column for semester field
+            // View column for ma_id field
             //
-            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column = new NumberViewColumn('ma_id', 'ma_id', 'Ma Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -440,28 +335,10 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for pelajaran field
-            //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
             // View column for file field
             //
             $column = new TextViewColumn('file', 'file', 'File', $this->dataset);
             $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for visit field
-            //
-            $column = new NumberViewColumn('visit', 'visit', 'Visit', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddSingleRecordViewColumn($column);
             
             //
@@ -480,16 +357,19 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for tanggal field
-            //
-            $column = new TextViewColumn('tanggal', 'tanggal', 'Tanggal', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
             // View column for semester field
             //
             $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for ma_id field
+            //
+            $column = new NumberViewColumn('ma_id', 'ma_id', 'Ma Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -500,32 +380,11 @@
         protected function AddEditColumns(Grid $grid)
         {
             //
-            // Edit column for pelajaran field
-            //
-            $editor = new TextEdit('pelajaran_edit');
-            $editor->SetMaxLength(100);
-            $editColumn = new CustomEditColumn('Pelajaran', 'pelajaran', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
             // Edit column for file field
             //
             $editor = new TextEdit('file_edit');
             $editor->SetMaxLength(50);
             $editColumn = new CustomEditColumn('File', 'file', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for visit field
-            //
-            $editor = new TextEdit('visit_edit');
-            $editColumn = new CustomEditColumn('Visit', 'visit', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -553,22 +412,21 @@
             $grid->AddEditColumn($editColumn);
             
             //
-            // Edit column for tanggal field
-            //
-            $editor = new TextEdit('tanggal_edit');
-            $editor->SetMaxLength(20);
-            $editColumn = new CustomEditColumn('Tanggal', 'tanggal', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
             // Edit column for semester field
             //
             $editor = new TextEdit('semester_edit');
             $editColumn = new CustomEditColumn('Semester', 'semester', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for ma_id field
+            //
+            $editor = new TextEdit('ma_id_edit');
+            $editColumn = new CustomEditColumn('Ma Id', 'ma_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
         }
@@ -576,32 +434,11 @@
         protected function AddMultiEditColumns(Grid $grid)
         {
             //
-            // Edit column for pelajaran field
-            //
-            $editor = new TextEdit('pelajaran_edit');
-            $editor->SetMaxLength(100);
-            $editColumn = new CustomEditColumn('Pelajaran', 'pelajaran', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
             // Edit column for file field
             //
             $editor = new TextEdit('file_edit');
             $editor->SetMaxLength(50);
             $editColumn = new CustomEditColumn('File', 'file', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for visit field
-            //
-            $editor = new TextEdit('visit_edit');
-            $editColumn = new CustomEditColumn('Visit', 'visit', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -629,22 +466,21 @@
             $grid->AddMultiEditColumn($editColumn);
             
             //
-            // Edit column for tanggal field
-            //
-            $editor = new TextEdit('tanggal_edit');
-            $editor->SetMaxLength(20);
-            $editColumn = new CustomEditColumn('Tanggal', 'tanggal', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
             // Edit column for semester field
             //
             $editor = new TextEdit('semester_edit');
             $editColumn = new CustomEditColumn('Semester', 'semester', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for ma_id field
+            //
+            $editor = new TextEdit('ma_id_edit');
+            $editColumn = new CustomEditColumn('Ma Id', 'ma_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
         }
@@ -652,32 +488,11 @@
         protected function AddInsertColumns(Grid $grid)
         {
             //
-            // Edit column for pelajaran field
-            //
-            $editor = new TextEdit('pelajaran_edit');
-            $editor->SetMaxLength(100);
-            $editColumn = new CustomEditColumn('Pelajaran', 'pelajaran', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
             // Edit column for file field
             //
             $editor = new TextEdit('file_edit');
             $editor->SetMaxLength(50);
             $editColumn = new CustomEditColumn('File', 'file', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for visit field
-            //
-            $editor = new TextEdit('visit_edit');
-            $editColumn = new CustomEditColumn('Visit', 'visit', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -705,22 +520,21 @@
             $grid->AddInsertColumn($editColumn);
             
             //
-            // Edit column for tanggal field
-            //
-            $editor = new TextEdit('tanggal_edit');
-            $editor->SetMaxLength(20);
-            $editColumn = new CustomEditColumn('Tanggal', 'tanggal', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
             // Edit column for semester field
             //
             $editor = new TextEdit('semester_edit');
             $editColumn = new CustomEditColumn('Semester', 'semester', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for ma_id field
+            //
+            $editor = new TextEdit('ma_id_edit');
+            $editColumn = new CustomEditColumn('Ma Id', 'ma_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
             $grid->SetShowAddButton(true && $this->GetSecurityInfo()->HasAddGrant());
@@ -744,28 +558,10 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for pelajaran field
-            //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for file field
             //
             $column = new TextViewColumn('file', 'file', 'File', $this->dataset);
             $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for visit field
-            //
-            $column = new NumberViewColumn('visit', 'visit', 'Visit', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddPrintColumn($column);
             
             //
@@ -784,16 +580,19 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for tanggal field
-            //
-            $column = new TextViewColumn('tanggal', 'tanggal', 'Tanggal', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for semester field
             //
             $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for ma_id field
+            //
+            $column = new NumberViewColumn('ma_id', 'ma_id', 'Ma Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -814,28 +613,10 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for pelajaran field
-            //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for file field
             //
             $column = new TextViewColumn('file', 'file', 'File', $this->dataset);
             $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for visit field
-            //
-            $column = new NumberViewColumn('visit', 'visit', 'Visit', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddExportColumn($column);
             
             //
@@ -854,16 +635,19 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for tanggal field
-            //
-            $column = new TextViewColumn('tanggal', 'tanggal', 'Tanggal', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for semester field
             //
             $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for ma_id field
+            //
+            $column = new NumberViewColumn('ma_id', 'ma_id', 'Ma Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -874,28 +658,10 @@
         private function AddCompareColumns(Grid $grid)
         {
             //
-            // View column for pelajaran field
-            //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $grid->AddCompareColumn($column);
-            
-            //
             // View column for file field
             //
             $column = new TextViewColumn('file', 'file', 'File', $this->dataset);
             $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for visit field
-            //
-            $column = new NumberViewColumn('visit', 'visit', 'Visit', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddCompareColumn($column);
             
             //
@@ -914,16 +680,19 @@
             $grid->AddCompareColumn($column);
             
             //
-            // View column for tanggal field
-            //
-            $column = new TextViewColumn('tanggal', 'tanggal', 'Tanggal', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
             // View column for semester field
             //
             $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for ma_id field
+            //
+            $column = new NumberViewColumn('ma_id', 'ma_id', 'Ma Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -980,16 +749,13 @@
             $result->SetShowKeyColumnsImagesInHeader(false);
             $result->SetViewMode(ViewMode::TABLE);
             $result->setEnableRuntimeCustomization(true);
-            $result->setAllowCompare(true);
-            $this->AddCompareHeaderColumns($result);
-            $this->AddCompareColumns($result);
             $result->setMultiEditAllowed($this->GetSecurityInfo()->HasEditGrant() && true);
             $result->setTableBordered(false);
             $result->setTableCondensed(false);
             
-            $result->SetHighlightRowAtHover(false);
+            $result->SetHighlightRowAtHover(true);
             $result->SetWidth('');
-            $this->AddOperationsColumns($result);
+    
             $this->AddFieldColumns($result);
             $this->AddSingleRecordViewColumns($result);
             $this->AddEditColumns($result);
@@ -999,7 +765,7 @@
             $this->AddExportColumns($result);
             $this->AddMultiUploadColumn($result);
     
-    
+            $this->AddOperationsColumns($result);
             $this->SetShowPageList(true);
             $this->SetShowTopPageNavigator(true);
             $this->SetShowBottomPageNavigator(true);
@@ -1007,10 +773,10 @@
             $this->setPrintListRecordAvailable(false);
             $this->setPrintOneRecordAvailable(true);
             $this->setAllowPrintSelectedRecords(true);
-            $this->setExportListAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
-            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportListAvailable(array('pdf', 'excel', 'word'));
+            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word'));
             $this->setExportListRecordAvailable(array());
-            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word'));
     
             return $result;
         }

@@ -35,7 +35,7 @@ function OnBeforeLogout($userName, EngConnection $connection) {
 SetUpUserAuthorization();
 
 $page = new LoginPage(
-    'phpgen_users.php',
+    'kelas.php',
     dirname(__FILE__),
     GetApplication()->GetUserAuthentication(),
     MySqlIConnectionFactory::getInstance(),

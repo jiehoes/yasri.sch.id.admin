@@ -12,27 +12,28 @@ include_once dirname(__FILE__) . '/' . 'database_engine/mysql_engine.php';
 
 
 
-$dataSourceRecordPermissions = array('phpgen_users' => new DataSourceRecordPermission('user_name', false, false, false, true, true, true));
+$dataSourceRecordPermissions = array();
 
-$tableCaptions = array('phpgen_users' => 'Users',
-'kelas' => 'Kelas',
+$tableCaptions = array('kelas' => 'Kelas',
 'mengajar' => 'Mengajar',
-'pelajaran' => 'Pelajaran',
-'programahli' => 'Program Keahlian',
-'semester' => 'Semester',
 'silabus' => 'Silabus',
 'siswa' => 'Siswa',
-'staf' => 'Guru/Staf',
-'tahunajar' => 'Tahun Ajaran');
+'ta' => 'Tahun Ajaran',
+'ma' => 'Mata Ajaran',
+'pa' => 'Program Keahlian',
+'admin_users' => 'Admin',
+'guru_users' => 'Guru/Staf',
+'siswa_users' => 'Siswa',
+'ppdb_users' => 'PPDB');
 
 $usersTableInfo = array(
-    'TableName' => 'phpgen_users',
+    'TableName' => 'admin_users',
     'UserId' => 'user_id',
     'UserName' => 'user_name',
     'Password' => 'user_password',
-    'Email' => '',
-    'UserToken' => '',
-    'UserStatus' => ''
+    'Email' => 'user_email',
+    'UserToken' => 'user_token',
+    'UserStatus' => 'user_status'
 );
 
 function EncryptPassword($password, &$result)
@@ -72,7 +73,7 @@ function VerifyPasswordStrength($password, &$result, &$passwordRuleMessage)
 
 function CreatePasswordHasher()
 {
-    $hasher = CreateHasher('');
+    $hasher = CreateHasher('MD5');
     if ($hasher instanceof CustomStringHasher) {
         $hasher->OnEncryptPassword->AddListener('EncryptPassword');
         $hasher->OnVerifyPassword->AddListener('VerifyPassword');
@@ -96,7 +97,7 @@ function CreateTableBasedUserManager()
     global $usersTableInfo;
 
     $userManager = new TableBasedUserManager(MySqlIConnectionFactory::getInstance(), GetGlobalConnectionOptions(), 
-        $usersTableInfo, CreatePasswordHasher(), false);
+        $usersTableInfo, CreatePasswordHasher(), true);
     $userManager->OnVerifyPasswordStrength->AddListener('VerifyPasswordStrength');
 
     return $userManager;
@@ -115,7 +116,7 @@ function SetUpUserAuthorization()
 
     $grantManager = CreateGrantManager();
 
-    $userAuthentication = new TableBasedUserAuthentication(new UserIdentitySessionStorage(), false, $hasher, CreateTableBasedUserManager(), true, false, false);
+    $userAuthentication = new TableBasedUserAuthentication(new UserIdentitySessionStorage(), false, $hasher, CreateTableBasedUserManager(), true, false, true);
 
     GetApplication()->SetUserAuthentication($userAuthentication);
     GetApplication()->SetUserGrantManager($grantManager);

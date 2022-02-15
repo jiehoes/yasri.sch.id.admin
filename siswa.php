@@ -460,14 +460,7 @@
         {
             $actions = $grid->getActions();
             $actions->setCaption($this->GetLocalizerCaptions()->GetMessageString('Actions'));
-            $actions->setPosition(ActionList::POSITION_LEFT);
-            
-            if ($this->GetSecurityInfo()->HasViewGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('View'), OPERATION_VIEW, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
-            }
+            $actions->setPosition(ActionList::POSITION_RIGHT);
             
             if ($this->GetSecurityInfo()->HasEditGrant())
             {
@@ -485,13 +478,6 @@
                 $operation->OnShow->AddListener('ShowDeleteButtonHandler', $this);
                 $operation->SetAdditionalAttribute('data-modal-operation', 'delete');
                 $operation->SetAdditionalAttribute('data-delete-handler-name', $this->GetModalGridDeleteHandler());
-            }
-            
-            if ($this->GetSecurityInfo()->HasAddGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('Copy'), OPERATION_COPY, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
             }
         }
     
@@ -1480,16 +1466,13 @@
             $result->SetShowKeyColumnsImagesInHeader(false);
             $result->SetViewMode(ViewMode::TABLE);
             $result->setEnableRuntimeCustomization(true);
-            $result->setAllowCompare(true);
-            $this->AddCompareHeaderColumns($result);
-            $this->AddCompareColumns($result);
             $result->setMultiEditAllowed($this->GetSecurityInfo()->HasEditGrant() && true);
             $result->setTableBordered(false);
             $result->setTableCondensed(false);
             
-            $result->SetHighlightRowAtHover(false);
+            $result->SetHighlightRowAtHover(true);
             $result->SetWidth('');
-            $this->AddOperationsColumns($result);
+    
             $this->AddFieldColumns($result);
             $this->AddSingleRecordViewColumns($result);
             $this->AddEditColumns($result);
@@ -1499,7 +1482,7 @@
             $this->AddExportColumns($result);
             $this->AddMultiUploadColumn($result);
     
-    
+            $this->AddOperationsColumns($result);
             $this->SetShowPageList(true);
             $this->SetShowTopPageNavigator(true);
             $this->SetShowBottomPageNavigator(true);
@@ -1507,10 +1490,10 @@
             $this->setPrintListRecordAvailable(false);
             $this->setPrintOneRecordAvailable(true);
             $this->setAllowPrintSelectedRecords(true);
-            $this->setExportListAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
-            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportListAvailable(array('pdf', 'excel', 'word'));
+            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word'));
             $this->setExportListRecordAvailable(array());
-            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word'));
     
             return $result;
         }

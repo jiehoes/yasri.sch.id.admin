@@ -1,12 +1,12 @@
 <Project version="20.5.0.4" edition="pro" localizationFileName="C:\Program Files (x86)\SQL Maestro Group\PHP Generator for MySQL Professional\lang.en.php" phpDriver="1" outputPath="D:\ms4w\apps\yasri.sch.id.admin" copySystemFiles="true" generateModifiedDataOnly="true" outputFilesExtension="php" colorSchemeName="lumen">
-  <ConnectionOptions host="localhost" port="3306" login="root" password="R*OJ[/GU^&gt;`~" database="master_yasridb" client_encoding="utf8" allow_old_password="false">
+  <ConnectionOptions host="localhost" port="3306" login="u1565842_yasridb" password="R*OJ[/G\_&gt;&quot;\JJBJJ`~~" database="u1565842_yasridb" client_encoding="utf8" allow_old_password="false">
     <ssh_secure secure="false" port="22" authentication_mode="0"/>
     <http_tunnel tunneling="false" url="">
       <http_proxy_server use_proxy="false" port="8080"/>
       <http_authentication/>
     </http_tunnel>
   </ConnectionOptions>
-  <ScriptConnectionOptions host="localhost" port="3306" login="root" password="R*OJ[/GU^&gt;`~" database="master_yasridb" client_encoding="utf8" allow_old_password="false">
+  <ScriptConnectionOptions host="localhost" port="3306" login="u1565842_yasridb" password="R*OJ[/G\_&gt;&quot;\JJBJJ`~~" database="u1565842_yasridb" client_encoding="utf8" allow_old_password="false">
     <ssh_secure secure="false" port="22" authentication_mode="0"/>
     <http_tunnel tunneling="false" url="">
       <http_proxy_server use_proxy="false" port="8080"/>
@@ -14,899 +14,208 @@
     </http_tunnel>
   </ScriptConnectionOptions>
   <DataSources>
-    <DataSource name="phpgen_users"/>
     <DataSource name="kelas"/>
     <DataSource name="mengajar"/>
-    <DataSource name="pelajaran"/>
-    <DataSource name="programahli"/>
-    <DataSource name="semester"/>
     <DataSource name="silabus"/>
     <DataSource name="siswa"/>
-    <DataSource name="staf"/>
-    <DataSource name="tahunajar"/>
+    <DataSource name="admin_users"/>
+    <DataSource name="guru_users"/>
+    <DataSource name="ppdb_users"/>
+    <DataSource name="siswa_users"/>
+    <DataSource name="ma"/>
+    <DataSource name="pa"/>
+    <DataSource name="ta"/>
   </DataSources>
-  <Presentation disableMagicQuotesRuntime="false" showEnvironmentVariables="false" showExecutedQueries="false" showPHPErrorsAndWarnings="false" enableInactivityTimeout="true" inactivityTimeoutInterval="120" setHomePageAsStartupPage="true">
+  <Presentation disableMagicQuotesRuntime="false" showEnvironmentVariables="false" showExecutedQueries="false" showPHPErrorsAndWarnings="false" enableInactivityTimeout="true" inactivityTimeoutInterval="120" setHomePageAsStartupPage="true" menuMode="1">
     <Pages>
-      <Page type="table" tableName="phpgen_users" numberByDataSource="0" fileName="phpgen_users" caption="Users" shortCaption="Users" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
+      <Page type="table" tableName="kelas" numberByDataSource="0" fileName="kelas" caption="Kelas" shortCaption="Kelas" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="user_password" caption="User Password" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tgllahir" caption="Tgllahir" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="12"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kelamin" caption="Kelamin" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kerja" caption="Kerja" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="20"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="alamat" caption="Alamat" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textBox" maxLength="100"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="negara" caption="Negara" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="3"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="telp" caption="Telp" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="sekolah" caption="Sekolah" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="homepage" caption="Homepage" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="profil" caption="Profil" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="email" caption="Email" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="60"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="pengingat" caption="Pengingat" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="jawaban" caption="Jawaban" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kategori" caption="Kategori" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="2"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="status" caption="Status" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tgl_login" caption="Tgl Login" selectedFilterOperators="2031871">
-            <ViewProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s"/>
-            <EditProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s" firstDayOfWeek="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nis" caption="Nis" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="25"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kelas" caption="Kelas" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="ket" caption="Ket" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="stblog" caption="Stblog" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kunjungblog" caption="Kunjungblog" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="point" caption="Point" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="stlogin" caption="Stlogin" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="totlogin" caption="Totlogin" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="ip" caption="Ip" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="16"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="stprofil" caption="Stprofil" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="4"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="setfacebook" caption="Setfacebook" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textBox" maxLength="100"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="user_id"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </List>
-          <View>
-            <Column fieldName="user_id"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </View>
-          <Edit>
-            <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="user_id"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="user_id"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="user_id"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </Print>
-          <Export>
-            <Column fieldName="user_id"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </Export>
-          <Compare>
-            <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="user_name"/>
-            <Column fieldName="user_password"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="tgllahir"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="kerja"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="negara"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="sekolah"/>
-            <Column fieldName="homepage"/>
-            <Column fieldName="profil"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pengingat"/>
-            <Column fieldName="jawaban"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="status"/>
-            <Column fieldName="tgl_login"/>
-            <Column fieldName="nis"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="ket"/>
-            <Column fieldName="stblog"/>
-            <Column fieldName="kunjungblog"/>
-            <Column fieldName="point"/>
-            <Column fieldName="stlogin"/>
-            <Column fieldName="totlogin"/>
-            <Column fieldName="ip"/>
-            <Column fieldName="stprofil"/>
-            <Column fieldName="setfacebook"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="true" ownerIdFieldName="user_name">
-          <AllUsersPermission view="false" edit="false" delete="false"/>
-          <OwnerPermission view="true" edit="true" delete="true"/>
-        </RecordPermissions>
-        <PartitionNavigators/>
-      </Page>
-      <Page type="table" tableName="kelas" numberByDataSource="0" fileName="kelas" caption="Kelas" shortCaption="Kelas" groupName="Guru/Staff" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="kelas" caption="Kelas" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nip" caption="Nip" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="25"/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="tingkat" caption="Tingkat" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="3"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="program" caption="Program" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </List>
-          <View>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </View>
-          <Edit>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </Print>
-          <Export>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </Export>
-          <Compare>
-            <Column fieldName="kelas"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="kelas" visible="false"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="tingkat"/>
-            <Column fieldName="program"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="false"/>
-        <PartitionNavigators/>
-      </Page>
-      <Page type="table" tableName="mengajar" numberByDataSource="0" fileName="mengajar" caption="Mengajar" shortCaption="Mengajar" groupName="Guru/Staff" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="idajar" caption="Idajar" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nip" caption="Nip" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="25"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kelas" caption="Kelas" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="kelas_id" caption="Kelas Id" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="10"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="guru_id" caption="Guru Id" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="25"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pa" caption="Pa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="tingkat"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </List>
+          <View>
+            <Column fieldName="tingkat"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </View>
+          <Edit>
+            <Column fieldName="tingkat" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="tingkat" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="tingkat" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="tingkat" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="tingkat"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </Print>
+          <Export>
+            <Column fieldName="tingkat"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </Export>
+          <Compare>
+            <Column fieldName="tingkat" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="tingkat" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="pa"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="table" tableName="mengajar" numberByDataSource="0" fileName="mengajar" caption="Mengajar" shortCaption="Mengajar" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
           <ColumnPresentation fieldName="pel" caption="Pel" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="30"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="program" caption="Program" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="ajar_id" caption="Ajar Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="guru_id" caption="Guru Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kelas_id" caption="Kelas Id" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="X-DKV" caption="X-DKV"/>
+                <Value name="XI-DKV" caption="XI-DKV"/>
+                <Value name="XII-DKV" caption="XII-DKV"/>
+                <Value name="X-OTKP" caption="X-OTKP"/>
+                <Value name="XI-OTKP" caption="XI-OTKP"/>
+                <Value name="XII-OTKP" caption="XII-OTKP"/>
+              </Values>
+            </EditProperties>
           </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="idajar"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </List>
           <View>
-            <Column fieldName="idajar"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </View>
           <Edit>
-            <Column fieldName="idajar" visible="false"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </Edit>
           <Insert>
-            <Column fieldName="idajar" visible="false"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </Insert>
           <QuickFilter>
-            <Column fieldName="idajar"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="idajar"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="idajar"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </Print>
           <Export>
-            <Column fieldName="idajar"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </Export>
           <Compare>
-            <Column fieldName="idajar" visible="false"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="idajar" visible="false"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelas"/>
             <Column fieldName="pel"/>
-            <Column fieldName="program"/>
+            <Column fieldName="ajar_id"/>
+            <Column fieldName="guru_id"/>
+            <Column fieldName="kelas_id"/>
           </MultiEdit>
         </Columns>
         <Details/>
         <RecordPermissions useRecordPermissions="false"/>
         <PartitionNavigators/>
       </Page>
-      <Page type="table" tableName="pelajaran" numberByDataSource="0" fileName="pelajaran" caption="Pelajaran" shortCaption="Pelajaran" groupName="Guru/Staff" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="kode_pel" caption="Kode Pel" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="20"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="idpel" caption="Idpel" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="pelajaran" caption="Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="pel" caption="Pel" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="program" caption="Program" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </List>
-          <View>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </View>
-          <Edit>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </Print>
-          <Export>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </Export>
-          <Compare>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="kode_pel"/>
-            <Column fieldName="idpel" visible="false"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="pel"/>
-            <Column fieldName="program"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="false"/>
-        <PartitionNavigators/>
-      </Page>
-      <Page type="table" tableName="programahli" numberByDataSource="0" fileName="programahli" caption="Program Keahlian" shortCaption="Program Keahlian" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="idprog" caption="Idprog" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="program" caption="Program" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="idprog"/>
-            <Column fieldName="program"/>
-          </List>
-          <View>
-            <Column fieldName="idprog"/>
-            <Column fieldName="program"/>
-          </View>
-          <Edit>
-            <Column fieldName="idprog" visible="false"/>
-            <Column fieldName="program"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="idprog" visible="false"/>
-            <Column fieldName="program"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="idprog"/>
-            <Column fieldName="program"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="idprog"/>
-            <Column fieldName="program"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="idprog"/>
-            <Column fieldName="program"/>
-          </Print>
-          <Export>
-            <Column fieldName="idprog"/>
-            <Column fieldName="program"/>
-          </Export>
-          <Compare>
-            <Column fieldName="idprog" visible="false"/>
-            <Column fieldName="program"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="idprog" visible="false"/>
-            <Column fieldName="program"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="false"/>
-        <PartitionNavigators/>
-      </Page>
-      <Page type="table" tableName="semester" numberByDataSource="0" fileName="semester" caption="Semester" shortCaption="Semester" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="idsem" caption="Idsem" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="semester" caption="Semester" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="idsem"/>
-            <Column fieldName="semester"/>
-          </List>
-          <View>
-            <Column fieldName="idsem"/>
-            <Column fieldName="semester"/>
-          </View>
-          <Edit>
-            <Column fieldName="idsem" visible="false"/>
-            <Column fieldName="semester"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="idsem" visible="false"/>
-            <Column fieldName="semester"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="idsem"/>
-            <Column fieldName="semester"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="idsem"/>
-            <Column fieldName="semester"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="idsem"/>
-            <Column fieldName="semester"/>
-          </Print>
-          <Export>
-            <Column fieldName="idsem"/>
-            <Column fieldName="semester"/>
-          </Export>
-          <Compare>
-            <Column fieldName="idsem" visible="false"/>
-            <Column fieldName="semester"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="idsem" visible="false"/>
-            <Column fieldName="semester"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="false"/>
-        <PartitionNavigators/>
-      </Page>
-      <Page type="table" tableName="silabus" numberByDataSource="0" fileName="silabus" caption="Silabus" shortCaption="Silabus" groupName="Guru/Staff" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
+      <Page type="table" tableName="silabus" numberByDataSource="0" fileName="silabus" caption="Silabus" shortCaption="Silabus" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
@@ -916,19 +225,9 @@
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="pelajaran" caption="Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textBox" maxLength="100"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="file" caption="File" showColumnFilter="false" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="file" caption="File" showColumnFilter="false" selectedFilterOperators="1572864">
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="visit" caption="Visit" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
           <ColumnPresentation fieldName="ket" caption="Ket" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
@@ -938,11 +237,13 @@
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="20"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="tanggal" caption="Tanggal" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="20"/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="semester" caption="Semester" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="ma_id" caption="Ma Id" showColumnFilter="false" selectedFilterOperators="1573119">
             <ViewProperties type="text">
               <Format type="number" thousandSeparator=","/>
             </ViewProperties>
@@ -952,110 +253,90 @@
         <Columns>
           <List>
             <Column fieldName="id"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </List>
           <View>
             <Column fieldName="id"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </View>
           <Edit>
             <Column fieldName="id" visible="false"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </Edit>
           <Insert>
             <Column fieldName="id" visible="false"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </Insert>
           <QuickFilter>
             <Column fieldName="id"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="id"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </FilterBuilder>
           <Print>
             <Column fieldName="id"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </Print>
           <Export>
             <Column fieldName="id"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </Export>
           <Compare>
             <Column fieldName="id" visible="false"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </Compare>
           <MultiEdit>
             <Column fieldName="id" visible="false"/>
-            <Column fieldName="pelajaran"/>
             <Column fieldName="file"/>
-            <Column fieldName="visit"/>
             <Column fieldName="ket"/>
             <Column fieldName="kelas"/>
-            <Column fieldName="tanggal"/>
             <Column fieldName="semester"/>
+            <Column fieldName="ma_id"/>
           </MultiEdit>
         </Columns>
         <Details/>
         <RecordPermissions useRecordPermissions="false"/>
         <PartitionNavigators/>
       </Page>
-      <Page type="table" tableName="siswa" numberByDataSource="0" fileName="siswa" caption="Siswa" shortCaption="Siswa" groupName="Guru/Staff" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
+      <Page type="table" tableName="siswa" numberByDataSource="0" fileName="siswa" caption="Siswa" shortCaption="Siswa" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
@@ -1268,7 +549,204 @@
         <RecordPermissions useRecordPermissions="false"/>
         <PartitionNavigators/>
       </Page>
-      <Page type="table" tableName="staf" numberByDataSource="0" fileName="staf" caption="Guru/Staf" shortCaption="Guru/Staf" groupName="Guru/Staff" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
+      <Page type="table" tableName="ta" numberByDataSource="0" fileName="ta" caption="Tahun Ajaran" shortCaption="Tahun Ajaran" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="ta_id" caption="ID" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="ta" caption="Tahun Ajaran" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="10"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="ta_id"/>
+            <Column fieldName="ta"/>
+          </List>
+          <View>
+            <Column fieldName="ta_id"/>
+            <Column fieldName="ta"/>
+          </View>
+          <Edit>
+            <Column fieldName="ta_id" visible="false"/>
+            <Column fieldName="ta"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="ta_id" visible="false"/>
+            <Column fieldName="ta"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="ta_id"/>
+            <Column fieldName="ta"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="ta_id"/>
+            <Column fieldName="ta"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="ta_id"/>
+            <Column fieldName="ta"/>
+          </Print>
+          <Export>
+            <Column fieldName="ta_id"/>
+            <Column fieldName="ta"/>
+          </Export>
+          <Compare>
+            <Column fieldName="ta_id" visible="false"/>
+            <Column fieldName="ta"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="ta_id" visible="false"/>
+            <Column fieldName="ta"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="table" tableName="ma" numberByDataSource="0" fileName="ma" caption="Mata Ajaran" shortCaption="Mata Ajaran" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="ma_id" caption="ID" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pelajaran" caption="Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pelajaran" caption="Kode Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="20"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </List>
+          <View>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </View>
+          <Edit>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="kode_pelajaran"/>
+            <Column fieldName="pelajaran"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Print>
+          <Export>
+            <Column fieldName="ma_id"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Export>
+          <Compare>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="ma_id" visible="false"/>
+            <Column fieldName="pelajaran"/>
+            <Column fieldName="kode_pelajaran"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="table" tableName="pa" numberByDataSource="0" fileName="pa" caption="Program Keahlian" shortCaption="Program Keahlian" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="pa_id" caption="ID" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pa" caption="Program Keahlian" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="pa_id"/>
+            <Column fieldName="pa"/>
+          </List>
+          <View>
+            <Column fieldName="pa_id"/>
+            <Column fieldName="pa"/>
+          </View>
+          <Edit>
+            <Column fieldName="pa_id" visible="false"/>
+            <Column fieldName="pa"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="pa_id" visible="false"/>
+            <Column fieldName="pa"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="pa_id" visible="false"/>
+            <Column fieldName="pa"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="pa_id" visible="false"/>
+            <Column fieldName="pa"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="pa_id"/>
+            <Column fieldName="pa"/>
+          </Print>
+          <Export>
+            <Column fieldName="pa_id"/>
+            <Column fieldName="pa"/>
+          </Export>
+          <Compare>
+            <Column fieldName="pa_id" visible="false"/>
+            <Column fieldName="pa"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="pa_id" visible="false"/>
+            <Column fieldName="pa"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="table" tableName="admin_users" numberByDataSource="0" fileName="admin_users" caption="Admin Users" shortCaption="Admin" groupName="User" addSeparator="true" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
@@ -1278,322 +756,1639 @@
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nip" caption="Nip" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="25"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kelamin" caption="Kelamin" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="2"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="alamat" caption="Alamat" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="60"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tugas" caption="Tugas" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="telp" caption="Telp" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="15"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="hp" caption="Hp" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="15"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="email" caption="Email" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="pelajaran" caption="Pelajaran" showColumnFilter="false" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
             <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="tgl_lahir" caption="Tgl Lahir" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="15"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tmp_lahir" caption="Tmp Lahir" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="20"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kode" caption="Kode" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="pangkat" caption="Pangkat" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kategori" caption="Kategori" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="profilstaf" caption="Profilstaf" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="user_password" caption="User Password" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
             <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="nuptk" caption="Nuptk" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
+          <ColumnPresentation fieldName="user_email" caption="User Email" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_token" caption="User Token" headerHint="Token for user account verification or user password reset." showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_status" caption="User Status" headerHint="0 = OK, 1 = Account verification required, 2 = Password reset requested." showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
             <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </List>
           <View>
             <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </View>
           <Edit>
             <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </Edit>
           <Insert>
             <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </Insert>
           <QuickFilter>
             <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </FilterBuilder>
           <Print>
             <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </Print>
           <Export>
             <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </Export>
           <Compare>
             <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </Compare>
           <MultiEdit>
             <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="nip"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tugas"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="hp"/>
-            <Column fieldName="email"/>
-            <Column fieldName="pelajaran"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="kode"/>
-            <Column fieldName="pangkat"/>
-            <Column fieldName="kategori"/>
-            <Column fieldName="profilstaf"/>
-            <Column fieldName="nuptk"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="user_status"/>
           </MultiEdit>
         </Columns>
         <Details/>
         <RecordPermissions useRecordPermissions="false"/>
         <PartitionNavigators/>
       </Page>
-      <Page type="table" tableName="tahunajar" numberByDataSource="0" fileName="tahunajar" caption="Tahun Ajaran" shortCaption="Tahun Ajaran" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false">
+      <Page type="table" tableName="guru_users" numberByDataSource="0" fileName="guru_users" caption="Guru/Staf Users" shortCaption="Guru/Staf" groupName="User" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="idthajar" caption="Idthajar" showColumnFilter="false" selectedFilterOperators="1573119">
+          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
             <ViewProperties type="text">
               <Format type="number" thousandSeparator=","/>
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="thajar" caption="Thajar" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_password" caption="User Password" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_email" caption="User Email" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_token" caption="User Token" headerHint="Token for user account verification or user password reset." showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jenis_kelamin" caption="Jenis Kelamin" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Laki-laki" caption="Laki-laki"/>
+                <Value name="Perempuan" caption="Perempuan"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="alamat" caption="Alamat" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rt" caption="Rt" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rw" caption="Rw" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kelurahan_desa" caption="Kelurahan Desa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kecamatan" caption="Kecamatan" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kota_kabupaten" caption="Kota Kabupaten" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pos" caption="Kode Pos" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tempat_lahir" caption="Tempat Lahir" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_lahir" caption="Tanggal Lahir" canSetNull="true" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeKind="1"/>
+            <EditProperties type="dateTime" dateTimeFormat="Y-m-d" dateTimeKind="1" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="golongan_darah" caption="Golongan Darah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nig" caption="Nig" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nuptk" caption="Nuptk" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nomor_tlp_wa" caption="Nomor Tlp Wa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_status" caption="User Status" headerHint="0 = OK, 1 = Account verification required, 2 = Password reset requested." showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_update" caption="Tanggal Update" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_ktp" caption="Dokumen Ktp" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_kk" caption="Dokumen Kk" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_ijasah_terakhir" caption="Dokumen Ijasah Terakhir" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_sertifikat" caption="Dokumen Sertifikat" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_pas_foto" caption="Dokumen Pas Foto" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
           </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="idthajar"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </List>
           <View>
-            <Column fieldName="idthajar"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </View>
           <Edit>
-            <Column fieldName="idthajar" visible="false"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </Edit>
           <Insert>
-            <Column fieldName="idthajar" visible="false"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </Insert>
           <QuickFilter>
-            <Column fieldName="idthajar"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="idthajar"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="idthajar"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </Print>
           <Export>
-            <Column fieldName="idthajar"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </Export>
           <Compare>
-            <Column fieldName="idthajar" visible="false"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="idthajar" visible="false"/>
-            <Column fieldName="thajar"/>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nig"/>
+            <Column fieldName="nuptk"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_ktp"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_ijasah_terakhir"/>
+            <Column fieldName="dokumen_sertifikat"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="table" tableName="siswa_users" numberByDataSource="0" fileName="siswa_users" caption="Siswa Users" shortCaption="Siswa" groupName="User" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kelas_id" caption="Kelas Id" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="X-DKV" caption="X-DKV"/>
+                <Value name="XI-DKV" caption="XI-DKV"/>
+                <Value name="XII-DKV" caption="XII-DKV"/>
+                <Value name="X-OTKP" caption="X-OTKP"/>
+                <Value name="XI-OTKP" caption="XI-OTKP"/>
+                <Value name="XII-OTKP" caption="XII-OTKP"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nis" caption="Nis" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_password" caption="User Password" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_email" caption="User Email" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_token" caption="User Token" headerHint="Token for user account verification or user password reset." showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jenis_kelamin" caption="Jenis Kelamin" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Laki-laki" caption="Laki-laki"/>
+                <Value name="Perempuan" caption="Perempuan"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ayah_wali" caption="Nama Ayah Wali" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="no_ktp_ayah" caption="No Ktp Ayah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ibu" caption="Nama Ibu" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="alamat" caption="Alamat" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rt" caption="Rt" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rw" caption="Rw" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kelurahan_desa" caption="Kelurahan Desa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kecamatan" caption="Kecamatan" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kota_kabupaten" caption="Kota Kabupaten" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pos" caption="Kode Pos" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tempat_lahir" caption="Tempat Lahir" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_lahir" caption="Tanggal Lahir" canSetNull="true" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeKind="1"/>
+            <EditProperties type="dateTime" dateTimeFormat="Y-m-d" dateTimeKind="1" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="golongan_darah" caption="Golongan Darah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nisn" caption="Nisn" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nik" caption="Nik" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nomor_tlp_wa" caption="Nomor Tlp Wa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="anak_ke" caption="Anak Ke" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jumlah_saudara" caption="Jumlah Saudara" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="asal_sekolah" caption="Asal Sekolah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="asal_kotakab" caption="Asal Kotakab" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_status" caption="User Status" headerHint="0 = OK, 1 = Account verification required, 2 = Password reset requested." showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_update" caption="Tanggal Update" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_kk" caption="Dokumen Kk" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_akte_kelahiran" caption="Dokumen Akte Kelahiran" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_pas_foto" caption="Dokumen Pas Foto" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="user_id"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </List>
+          <View>
+            <Column fieldName="user_id"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </View>
+          <Edit>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="user_id"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="user_id"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="user_id"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Print>
+          <Export>
+            <Column fieldName="user_id"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Export>
+          <Compare>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="kelas_id"/>
+            <Column fieldName="nis"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </MultiEdit>
+        </Columns>
+        <Details/>
+        <RecordPermissions useRecordPermissions="false"/>
+        <PartitionNavigators/>
+      </Page>
+      <Page type="table" tableName="ppdb_users" numberByDataSource="0" fileName="ppdb_users" caption="Ppdb Users" shortCaption="PPDB" groupName="User" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
+        <BeforeGridText/>
+        <DetailedDescription/>
+        <ColumnPresentations>
+          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_password" caption="User Password" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_email" caption="User Email" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_token" caption="User Token" headerHint="Token for user account verification or user password reset." showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jenis_kelamin" caption="Jenis Kelamin" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Laki-laki" caption="Laki-laki"/>
+                <Value name="Perempuan" caption="Perempuan"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pindah_sekolah" caption="Pindah Sekolah" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Ya" caption="Ya"/>
+                <Value name="Tidak" caption="Tidak"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pindahan_kelas" caption="Pindahan Kelas" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Kelas X" caption="Kelas X"/>
+                <Value name="Kelas XI" caption="Kelas XI"/>
+                <Value name="Kelas XII" caption="Kelas XII"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ayah_wali" caption="Nama Ayah Wali" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="no_ktp_ayah" caption="No Ktp Ayah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nama_ibu" caption="Nama Ibu" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="alamat" caption="Alamat" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rt" caption="Rt" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="rw" caption="Rw" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kelurahan_desa" caption="Kelurahan Desa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kecamatan" caption="Kecamatan" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kota_kabupaten" caption="Kota Kabupaten" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="kode_pos" caption="Kode Pos" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tempat_lahir" caption="Tempat Lahir" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_lahir" caption="Tanggal Lahir" canSetNull="true" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeKind="1"/>
+            <EditProperties type="dateTime" dateTimeFormat="Y-m-d" dateTimeKind="1" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="golongan_darah" caption="Golongan Darah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nisn" caption="Nisn" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nik" caption="Nik" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="nomor_tlp_wa" caption="Nomor Tlp Wa" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="anak_ke" caption="Anak Ke" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="jumlah_saudara" caption="Jumlah Saudara" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="asal_sekolah" caption="Asal Sekolah" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="asal_kotakab" caption="Asal Kotakab" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="user_status" caption="User Status" headerHint="0 = OK, 1 = Account verification required, 2 = Password reset requested." showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tahun_ajaran" caption="Tahun Ajaran" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="tanggal_update" caption="Tanggal Update" selectedFilterOperators="2031871">
+            <ViewProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s"/>
+            <EditProperties type="dateTime" dateTimeFormat="Y-m-d H:i:s" firstDayOfWeek="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_kk" caption="Dokumen Kk" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_akte_kelahiran" caption="Dokumen Akte Kelahiran" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_pas_foto" caption="Dokumen Pas Foto" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+        </ColumnPresentations>
+        <Columns>
+          <List>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </List>
+          <View>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </View>
+          <Edit>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Edit>
+          <Insert>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Insert>
+          <QuickFilter>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </QuickFilter>
+          <FilterBuilder>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </FilterBuilder>
+          <Print>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Print>
+          <Export>
+            <Column fieldName="user_id"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Export>
+          <Compare>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
+          </Compare>
+          <MultiEdit>
+            <Column fieldName="user_id" visible="false"/>
+            <Column fieldName="user_name"/>
+            <Column fieldName="user_password" visible="false"/>
+            <Column fieldName="user_email"/>
+            <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="nama"/>
+            <Column fieldName="jenis_kelamin"/>
+            <Column fieldName="pindah_sekolah"/>
+            <Column fieldName="pindahan_kelas"/>
+            <Column fieldName="nama_ayah_wali"/>
+            <Column fieldName="no_ktp_ayah"/>
+            <Column fieldName="nama_ibu"/>
+            <Column fieldName="alamat"/>
+            <Column fieldName="rt"/>
+            <Column fieldName="rw"/>
+            <Column fieldName="kelurahan_desa"/>
+            <Column fieldName="kecamatan"/>
+            <Column fieldName="kota_kabupaten"/>
+            <Column fieldName="kode_pos"/>
+            <Column fieldName="tempat_lahir"/>
+            <Column fieldName="tanggal_lahir"/>
+            <Column fieldName="golongan_darah"/>
+            <Column fieldName="nisn"/>
+            <Column fieldName="nik"/>
+            <Column fieldName="nomor_tlp_wa"/>
+            <Column fieldName="anak_ke"/>
+            <Column fieldName="jumlah_saudara"/>
+            <Column fieldName="asal_sekolah"/>
+            <Column fieldName="asal_kotakab"/>
+            <Column fieldName="user_status"/>
+            <Column fieldName="tahun_ajaran"/>
+            <Column fieldName="tanggal_update"/>
+            <Column fieldName="dokumen_kk"/>
+            <Column fieldName="dokumen_akte_kelahiran"/>
+            <Column fieldName="dokumen_pas_foto"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -1601,7 +2396,7 @@
         <PartitionNavigators/>
       </Page>
     </Pages>
-    <UserAuthorization type="tableBased" tableName="phpgen_users" userIdField="user_id" userNameField="user_name" passwordField="user_password" allowUserToChangePassword="true"/>
+    <UserAuthorization type="tableBased" tableName="admin_users" userIdField="user_id" userNameField="user_name" passwordField="user_password" userEmailField="user_email" userTokenField="user_token" userStatusField="user_status" passwordEncryption="MD5" allowUserToChangePassword="true" recoveringPasswordEnabled="true"/>
     <UserGrants enableGuestAccess="false" storageType="table">
       <UserGrantsStorage userPermsTableName="phpgen_user_perms" userPermsUserId="user_id" userPermsPageName="page_name" userPermsAcl="perm_name"/>
     </UserGrants>
@@ -1610,19 +2405,20 @@
     <PHPOptions/>
     <Groups>
       <Group caption="No group"/>
-      <Group caption="Guru/Staff"/>
+      <Group caption="Akademik"/>
       <Group caption="Siswa"/>
       <Group caption="Keuangan"/>
       <Group caption="Administrator"/>
       <Group caption="Dashboard"/>
+      <Group caption="User"/>
     </Groups>
-    <outgoingMailSettings mailer="0" fromEmail="" fromName=""/>
+    <outgoingMailSettings mailer="1" fromEmail="sekretariat@yasri.sch.id" fromName="" smtp_host="mail.yasri.sch.id" smtp_port="465" smpt_use_authentication="true" smpt_username="sekretariat@yasri.sch.id" smpt_password="R*OJ[/G\_&gt;&quot;\JJBJJ`~~" smpt_encryption="1"/>
   </Presentation>
   <UserCSS/>
   <PdfUserStyles/>
   <PrintUserStyles/>
   <UserJS/>
   <ExcludedPaths/>
-  <DefaultPageProperties recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" deleteAbilityMode="3" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" exportAllRecordsAvailable="31" exportSelectedRecordsAvailable="31" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="31" printAvailable="13" useActionImages="true" showKeyColumnsImagesInGridHeader="false"/>
+  <DefaultPageProperties recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false"/>
   <DefaultDataFormats numberAfterDecimal="4" DecimalSeparator="." ThousandSeparator="," DateTimeFormat="Y-m-d H:i:s" DateFormat="Y-m-d" firstDayOfWeek="0"/>
 </Project>

@@ -31,7 +31,7 @@
     
     
     
-    class tahunajarPage extends Page
+    class taPage extends Page
     {
         protected function DoBeforeCreate()
         {
@@ -41,11 +41,11 @@
             $this->dataset = new TableDataset(
                 MySqlIConnectionFactory::getInstance(),
                 GetConnectionOptions(),
-                '`tahunajar`');
+                '`ta`');
             $this->dataset->addFields(
                 array(
-                    new IntegerField('idthajar', true, true, true),
-                    new StringField('thajar')
+                    new IntegerField('ta_id', true, true, true),
+                    new StringField('ta')
                 )
             );
         }
@@ -78,16 +78,16 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'idthajar', 'idthajar', 'Idthajar'),
-                new FilterColumn($this->dataset, 'thajar', 'thajar', 'Thajar')
+                new FilterColumn($this->dataset, 'ta_id', 'ta_id', 'ID'),
+                new FilterColumn($this->dataset, 'ta', 'ta', 'Tahun Ajaran')
             );
         }
     
         protected function setupQuickFilter(QuickFilter $quickFilter, FixedKeysArray $columns)
         {
             $quickFilter
-                ->addColumn($columns['idthajar'])
-                ->addColumn($columns['thajar']);
+                ->addColumn($columns['ta_id'])
+                ->addColumn($columns['ta']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -97,10 +97,10 @@
     
         protected function setupFilterBuilder(FilterBuilder $filterBuilder, FixedKeysArray $columns)
         {
-            $main_editor = new TextEdit('idthajar_edit');
+            $main_editor = new TextEdit('ta_id_edit');
             
             $filterBuilder->addColumn(
-                $columns['idthajar'],
+                $columns['ta_id'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -115,11 +115,11 @@
                 )
             );
             
-            $main_editor = new TextEdit('thajar_edit');
+            $main_editor = new TextEdit('ta_edit');
             $main_editor->SetMaxLength(10);
             
             $filterBuilder->addColumn(
-                $columns['thajar'],
+                $columns['ta'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -145,14 +145,7 @@
         {
             $actions = $grid->getActions();
             $actions->setCaption($this->GetLocalizerCaptions()->GetMessageString('Actions'));
-            $actions->setPosition(ActionList::POSITION_LEFT);
-            
-            if ($this->GetSecurityInfo()->HasViewGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('View'), OPERATION_VIEW, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
-            }
+            $actions->setPosition(ActionList::POSITION_RIGHT);
             
             if ($this->GetSecurityInfo()->HasEditGrant())
             {
@@ -171,21 +164,14 @@
                 $operation->SetAdditionalAttribute('data-modal-operation', 'delete');
                 $operation->SetAdditionalAttribute('data-delete-handler-name', $this->GetModalGridDeleteHandler());
             }
-            
-            if ($this->GetSecurityInfo()->HasAddGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('Copy'), OPERATION_COPY, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
-            }
         }
     
         protected function AddFieldColumns(Grid $grid, $withDetails = true)
         {
             //
-            // View column for idthajar field
+            // View column for ta_id field
             //
-            $column = new NumberViewColumn('idthajar', 'idthajar', 'Idthajar', $this->dataset);
+            $column = new NumberViewColumn('ta_id', 'ta_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -196,9 +182,9 @@
             $grid->AddViewColumn($column);
             
             //
-            // View column for thajar field
+            // View column for ta field
             //
-            $column = new TextViewColumn('thajar', 'thajar', 'Thajar', $this->dataset);
+            $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
@@ -209,9 +195,9 @@
         protected function AddSingleRecordViewColumns(Grid $grid)
         {
             //
-            // View column for idthajar field
+            // View column for ta_id field
             //
-            $column = new NumberViewColumn('idthajar', 'idthajar', 'Idthajar', $this->dataset);
+            $column = new NumberViewColumn('ta_id', 'ta_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -219,9 +205,9 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for thajar field
+            // View column for ta field
             //
-            $column = new TextViewColumn('thajar', 'thajar', 'Thajar', $this->dataset);
+            $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddSingleRecordViewColumn($column);
         }
@@ -229,11 +215,11 @@
         protected function AddEditColumns(Grid $grid)
         {
             //
-            // Edit column for thajar field
+            // Edit column for ta field
             //
-            $editor = new TextEdit('thajar_edit');
+            $editor = new TextEdit('ta_edit');
             $editor->SetMaxLength(10);
-            $editColumn = new CustomEditColumn('Thajar', 'thajar', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('Tahun Ajaran', 'ta', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
@@ -242,11 +228,11 @@
         protected function AddMultiEditColumns(Grid $grid)
         {
             //
-            // Edit column for thajar field
+            // Edit column for ta field
             //
-            $editor = new TextEdit('thajar_edit');
+            $editor = new TextEdit('ta_edit');
             $editor->SetMaxLength(10);
-            $editColumn = new CustomEditColumn('Thajar', 'thajar', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('Tahun Ajaran', 'ta', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
@@ -255,11 +241,11 @@
         protected function AddInsertColumns(Grid $grid)
         {
             //
-            // Edit column for thajar field
+            // Edit column for ta field
             //
-            $editor = new TextEdit('thajar_edit');
+            $editor = new TextEdit('ta_edit');
             $editor->SetMaxLength(10);
-            $editColumn = new CustomEditColumn('Thajar', 'thajar', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('Tahun Ajaran', 'ta', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
@@ -274,9 +260,9 @@
         protected function AddPrintColumns(Grid $grid)
         {
             //
-            // View column for idthajar field
+            // View column for ta_id field
             //
-            $column = new NumberViewColumn('idthajar', 'idthajar', 'Idthajar', $this->dataset);
+            $column = new NumberViewColumn('ta_id', 'ta_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -284,9 +270,9 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for thajar field
+            // View column for ta field
             //
-            $column = new TextViewColumn('thajar', 'thajar', 'Thajar', $this->dataset);
+            $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddPrintColumn($column);
         }
@@ -294,9 +280,9 @@
         protected function AddExportColumns(Grid $grid)
         {
             //
-            // View column for idthajar field
+            // View column for ta_id field
             //
-            $column = new NumberViewColumn('idthajar', 'idthajar', 'Idthajar', $this->dataset);
+            $column = new NumberViewColumn('ta_id', 'ta_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -304,9 +290,9 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for thajar field
+            // View column for ta field
             //
-            $column = new TextViewColumn('thajar', 'thajar', 'Thajar', $this->dataset);
+            $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddExportColumn($column);
         }
@@ -314,9 +300,9 @@
         private function AddCompareColumns(Grid $grid)
         {
             //
-            // View column for thajar field
+            // View column for ta field
             //
-            $column = new TextViewColumn('thajar', 'thajar', 'Thajar', $this->dataset);
+            $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddCompareColumn($column);
         }
@@ -370,16 +356,13 @@
             $result->SetShowKeyColumnsImagesInHeader(false);
             $result->SetViewMode(ViewMode::TABLE);
             $result->setEnableRuntimeCustomization(true);
-            $result->setAllowCompare(true);
-            $this->AddCompareHeaderColumns($result);
-            $this->AddCompareColumns($result);
             $result->setMultiEditAllowed($this->GetSecurityInfo()->HasEditGrant() && true);
             $result->setTableBordered(false);
             $result->setTableCondensed(false);
             
-            $result->SetHighlightRowAtHover(false);
+            $result->SetHighlightRowAtHover(true);
             $result->SetWidth('');
-            $this->AddOperationsColumns($result);
+    
             $this->AddFieldColumns($result);
             $this->AddSingleRecordViewColumns($result);
             $this->AddEditColumns($result);
@@ -389,7 +372,7 @@
             $this->AddExportColumns($result);
             $this->AddMultiUploadColumn($result);
     
-    
+            $this->AddOperationsColumns($result);
             $this->SetShowPageList(true);
             $this->SetShowTopPageNavigator(true);
             $this->SetShowBottomPageNavigator(true);
@@ -397,10 +380,10 @@
             $this->setPrintListRecordAvailable(false);
             $this->setPrintOneRecordAvailable(true);
             $this->setAllowPrintSelectedRecords(true);
-            $this->setExportListAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
-            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportListAvailable(array('pdf', 'excel', 'word'));
+            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word'));
             $this->setExportListRecordAvailable(array());
-            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word'));
     
             return $result;
         }
@@ -560,8 +543,8 @@
 
     try
     {
-        $Page = new tahunajarPage("tahunajar", "tahunajar.php", GetCurrentUserPermissionsForPage("tahunajar"), 'UTF-8');
-        $Page->SetRecordPermission(GetCurrentUserRecordPermissionsForDataSource("tahunajar"));
+        $Page = new taPage("ta", "ta.php", GetCurrentUserPermissionsForPage("ta"), 'UTF-8');
+        $Page->SetRecordPermission(GetCurrentUserRecordPermissionsForDataSource("ta"));
         GetApplication()->SetMainPage($Page);
         GetApplication()->Run();
     }

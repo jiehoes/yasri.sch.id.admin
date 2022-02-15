@@ -31,24 +31,25 @@
     
     
     
-    class pelajaranPage extends Page
+    class admin_usersPage extends Page
     {
         protected function DoBeforeCreate()
         {
-            $this->SetTitle('Pelajaran');
-            $this->SetMenuLabel('Pelajaran');
+            $this->SetTitle('Admin Users');
+            $this->SetMenuLabel('Admin');
     
             $this->dataset = new TableDataset(
                 MySqlIConnectionFactory::getInstance(),
                 GetConnectionOptions(),
-                '`pelajaran`');
+                '`admin_users`');
             $this->dataset->addFields(
                 array(
-                    new StringField('kode_pel', true),
-                    new IntegerField('idpel', true, true, true),
-                    new StringField('pelajaran', true),
-                    new StringField('pel'),
-                    new StringField('program')
+                    new IntegerField('user_id', true, true, true),
+                    new StringField('user_name', true),
+                    new StringField('user_password', true),
+                    new StringField('user_email', true),
+                    new StringField('user_token'),
+                    new IntegerField('user_status', true)
                 )
             );
         }
@@ -81,22 +82,22 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'kode_pel', 'kode_pel', 'Kode Pel'),
-                new FilterColumn($this->dataset, 'idpel', 'idpel', 'Idpel'),
-                new FilterColumn($this->dataset, 'pelajaran', 'pelajaran', 'Pelajaran'),
-                new FilterColumn($this->dataset, 'pel', 'pel', 'Pel'),
-                new FilterColumn($this->dataset, 'program', 'program', 'Program')
+                new FilterColumn($this->dataset, 'user_id', 'user_id', 'User Id'),
+                new FilterColumn($this->dataset, 'user_name', 'user_name', 'User Name'),
+                new FilterColumn($this->dataset, 'user_password', 'user_password', 'User Password'),
+                new FilterColumn($this->dataset, 'user_email', 'user_email', 'User Email'),
+                new FilterColumn($this->dataset, 'user_token', 'user_token', 'User Token'),
+                new FilterColumn($this->dataset, 'user_status', 'user_status', 'User Status')
             );
         }
     
         protected function setupQuickFilter(QuickFilter $quickFilter, FixedKeysArray $columns)
         {
             $quickFilter
-                ->addColumn($columns['kode_pel'])
-                ->addColumn($columns['idpel'])
-                ->addColumn($columns['pelajaran'])
-                ->addColumn($columns['pel'])
-                ->addColumn($columns['program']);
+                ->addColumn($columns['user_id'])
+                ->addColumn($columns['user_name'])
+                ->addColumn($columns['user_email'])
+                ->addColumn($columns['user_status']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -106,11 +107,28 @@
     
         protected function setupFilterBuilder(FilterBuilder $filterBuilder, FixedKeysArray $columns)
         {
-            $main_editor = new TextEdit('kode_pel_edit');
-            $main_editor->SetMaxLength(20);
+            $main_editor = new TextEdit('user_id_edit');
             
             $filterBuilder->addColumn(
-                $columns['kode_pel'],
+                $columns['user_id'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('user_name');
+            
+            $filterBuilder->addColumn(
+                $columns['user_name'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -131,29 +149,10 @@
                 )
             );
             
-            $main_editor = new TextEdit('idpel_edit');
+            $main_editor = new TextEdit('user_email');
             
             $filterBuilder->addColumn(
-                $columns['idpel'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('pelajaran_edit');
-            $main_editor->SetMaxLength(50);
-            
-            $filterBuilder->addColumn(
-                $columns['pelajaran'],
+                $columns['user_email'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -174,11 +173,10 @@
                 )
             );
             
-            $main_editor = new TextEdit('pel_edit');
-            $main_editor->SetMaxLength(30);
+            $main_editor = new TextEdit('user_status_edit');
             
             $filterBuilder->addColumn(
-                $columns['pel'],
+                $columns['user_status'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -188,37 +186,6 @@
                     FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
                     FilterConditionOperator::IS_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('program_edit');
-            $main_editor->SetMaxLength(50);
-            
-            $filterBuilder->addColumn(
-                $columns['program'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -229,14 +196,7 @@
         {
             $actions = $grid->getActions();
             $actions->setCaption($this->GetLocalizerCaptions()->GetMessageString('Actions'));
-            $actions->setPosition(ActionList::POSITION_LEFT);
-            
-            if ($this->GetSecurityInfo()->HasViewGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('View'), OPERATION_VIEW, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
-            }
+            $actions->setPosition(ActionList::POSITION_RIGHT);
             
             if ($this->GetSecurityInfo()->HasEditGrant())
             {
@@ -255,31 +215,14 @@
                 $operation->SetAdditionalAttribute('data-modal-operation', 'delete');
                 $operation->SetAdditionalAttribute('data-delete-handler-name', $this->GetModalGridDeleteHandler());
             }
-            
-            if ($this->GetSecurityInfo()->HasAddGrant())
-            {
-                $operation = new LinkOperation($this->GetLocalizerCaptions()->GetMessageString('Copy'), OPERATION_COPY, $this->dataset, $grid);
-                $operation->setUseImage(true);
-                $actions->addOperation($operation);
-            }
         }
     
         protected function AddFieldColumns(Grid $grid, $withDetails = true)
         {
             //
-            // View column for kode_pel field
+            // View column for user_id field
             //
-            $column = new TextViewColumn('kode_pel', 'kode_pel', 'Kode Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
-            //
-            // View column for idpel field
-            //
-            $column = new NumberViewColumn('idpel', 'idpel', 'Idpel', $this->dataset);
+            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -290,32 +233,37 @@
             $grid->AddViewColumn($column);
             
             //
-            // View column for pelajaran field
+            // View column for user_name field
             //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
+            $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
             
             //
-            // View column for pel field
+            // View column for user_email field
             //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
             
             //
-            // View column for program field
+            // View column for user_status field
             //
-            $column = new TextViewColumn('program', 'program', 'Program', $this->dataset);
+            $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
             $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
+            $column->SetDescription('0 = OK, 1 = Account verification required, 2 = Password reset requested.');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
         }
@@ -323,16 +271,9 @@
         protected function AddSingleRecordViewColumns(Grid $grid)
         {
             //
-            // View column for kode_pel field
+            // View column for user_id field
             //
-            $column = new TextViewColumn('kode_pel', 'kode_pel', 'Kode Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for idpel field
-            //
-            $column = new NumberViewColumn('idpel', 'idpel', 'Idpel', $this->dataset);
+            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -340,68 +281,61 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for pelajaran field
+            // View column for user_name field
             //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
+            $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for pel field
+            // View column for user_email field
             //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for program field
+            // View column for user_status field
             //
-            $column = new TextViewColumn('program', 'program', 'Program', $this->dataset);
+            $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
             $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $grid->AddSingleRecordViewColumn($column);
         }
     
         protected function AddEditColumns(Grid $grid)
         {
             //
-            // Edit column for kode_pel field
+            // Edit column for user_name field
             //
-            $editor = new TextEdit('kode_pel_edit');
-            $editor->SetMaxLength(20);
-            $editColumn = new CustomEditColumn('Kode Pel', 'kode_pel', $editor, $this->dataset);
+            $editor = new TextAreaEdit('user_name_edit', 50, 8);
+            $editColumn = new CustomEditColumn('User Name', 'user_name', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
             
             //
-            // Edit column for pelajaran field
+            // Edit column for user_email field
             //
-            $editor = new TextEdit('pelajaran_edit');
-            $editor->SetMaxLength(50);
-            $editColumn = new CustomEditColumn('Pelajaran', 'pelajaran', $editor, $this->dataset);
+            $editor = new TextAreaEdit('user_email_edit', 50, 8);
+            $editColumn = new CustomEditColumn('User Email', 'user_email', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
             
             //
-            // Edit column for pel field
+            // Edit column for user_status field
             //
-            $editor = new TextEdit('pel_edit');
-            $editor->SetMaxLength(30);
-            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for program field
-            //
-            $editor = new TextEdit('program_edit');
-            $editor->SetMaxLength(50);
-            $editColumn = new CustomEditColumn('Program', 'program', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
+            $editor = new TextEdit('user_status_edit');
+            $editColumn = new CustomEditColumn('User Status', 'user_status', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
         }
@@ -409,44 +343,32 @@
         protected function AddMultiEditColumns(Grid $grid)
         {
             //
-            // Edit column for kode_pel field
+            // Edit column for user_name field
             //
-            $editor = new TextEdit('kode_pel_edit');
-            $editor->SetMaxLength(20);
-            $editColumn = new CustomEditColumn('Kode Pel', 'kode_pel', $editor, $this->dataset);
+            $editor = new TextAreaEdit('user_name_edit', 50, 8);
+            $editColumn = new CustomEditColumn('User Name', 'user_name', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
             
             //
-            // Edit column for pelajaran field
+            // Edit column for user_email field
             //
-            $editor = new TextEdit('pelajaran_edit');
-            $editor->SetMaxLength(50);
-            $editColumn = new CustomEditColumn('Pelajaran', 'pelajaran', $editor, $this->dataset);
+            $editor = new TextAreaEdit('user_email_edit', 50, 8);
+            $editColumn = new CustomEditColumn('User Email', 'user_email', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
             
             //
-            // Edit column for pel field
+            // Edit column for user_status field
             //
-            $editor = new TextEdit('pel_edit');
-            $editor->SetMaxLength(30);
-            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for program field
-            //
-            $editor = new TextEdit('program_edit');
-            $editor->SetMaxLength(50);
-            $editColumn = new CustomEditColumn('Program', 'program', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
+            $editor = new TextEdit('user_status_edit');
+            $editColumn = new CustomEditColumn('User Status', 'user_status', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
         }
@@ -454,44 +376,32 @@
         protected function AddInsertColumns(Grid $grid)
         {
             //
-            // Edit column for kode_pel field
+            // Edit column for user_name field
             //
-            $editor = new TextEdit('kode_pel_edit');
-            $editor->SetMaxLength(20);
-            $editColumn = new CustomEditColumn('Kode Pel', 'kode_pel', $editor, $this->dataset);
+            $editor = new TextAreaEdit('user_name_edit', 50, 8);
+            $editColumn = new CustomEditColumn('User Name', 'user_name', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
             
             //
-            // Edit column for pelajaran field
+            // Edit column for user_email field
             //
-            $editor = new TextEdit('pelajaran_edit');
-            $editor->SetMaxLength(50);
-            $editColumn = new CustomEditColumn('Pelajaran', 'pelajaran', $editor, $this->dataset);
+            $editor = new TextAreaEdit('user_email_edit', 50, 8);
+            $editColumn = new CustomEditColumn('User Email', 'user_email', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
             
             //
-            // Edit column for pel field
+            // Edit column for user_status field
             //
-            $editor = new TextEdit('pel_edit');
-            $editor->SetMaxLength(30);
-            $editColumn = new CustomEditColumn('Pel', 'pel', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for program field
-            //
-            $editor = new TextEdit('program_edit');
-            $editor->SetMaxLength(50);
-            $editColumn = new CustomEditColumn('Program', 'program', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
+            $editor = new TextEdit('user_status_edit');
+            $editColumn = new CustomEditColumn('User Status', 'user_status', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
             $grid->SetShowAddButton(true && $this->GetSecurityInfo()->HasAddGrant());
@@ -505,16 +415,9 @@
         protected function AddPrintColumns(Grid $grid)
         {
             //
-            // View column for kode_pel field
+            // View column for user_id field
             //
-            $column = new TextViewColumn('kode_pel', 'kode_pel', 'Kode Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for idpel field
-            //
-            $column = new NumberViewColumn('idpel', 'idpel', 'Idpel', $this->dataset);
+            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -522,40 +425,38 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for pelajaran field
+            // View column for user_name field
             //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
+            $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddPrintColumn($column);
             
             //
-            // View column for pel field
+            // View column for user_email field
             //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddPrintColumn($column);
             
             //
-            // View column for program field
+            // View column for user_status field
             //
-            $column = new TextViewColumn('program', 'program', 'Program', $this->dataset);
+            $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
             $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $grid->AddPrintColumn($column);
         }
     
         protected function AddExportColumns(Grid $grid)
         {
             //
-            // View column for kode_pel field
+            // View column for user_id field
             //
-            $column = new TextViewColumn('kode_pel', 'kode_pel', 'Kode Pel', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for idpel field
-            //
-            $column = new NumberViewColumn('idpel', 'idpel', 'Idpel', $this->dataset);
+            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -563,55 +464,58 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for pelajaran field
+            // View column for user_name field
             //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
+            $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddExportColumn($column);
             
             //
-            // View column for pel field
+            // View column for user_email field
             //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddExportColumn($column);
             
             //
-            // View column for program field
+            // View column for user_status field
             //
-            $column = new TextViewColumn('program', 'program', 'Program', $this->dataset);
+            $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
             $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $grid->AddExportColumn($column);
         }
     
         private function AddCompareColumns(Grid $grid)
         {
             //
-            // View column for kode_pel field
+            // View column for user_name field
             //
-            $column = new TextViewColumn('kode_pel', 'kode_pel', 'Kode Pel', $this->dataset);
+            $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddCompareColumn($column);
             
             //
-            // View column for pelajaran field
+            // View column for user_email field
             //
-            $column = new TextViewColumn('pelajaran', 'pelajaran', 'Pelajaran', $this->dataset);
+            $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
+            $column->SetMaxLength(75);
             $grid->AddCompareColumn($column);
             
             //
-            // View column for pel field
+            // View column for user_status field
             //
-            $column = new TextViewColumn('pel', 'pel', 'Pel', $this->dataset);
+            $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
             $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for program field
-            //
-            $column = new TextViewColumn('program', 'program', 'Program', $this->dataset);
-            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $grid->AddCompareColumn($column);
         }
     
@@ -664,16 +568,13 @@
             $result->SetShowKeyColumnsImagesInHeader(false);
             $result->SetViewMode(ViewMode::TABLE);
             $result->setEnableRuntimeCustomization(true);
-            $result->setAllowCompare(true);
-            $this->AddCompareHeaderColumns($result);
-            $this->AddCompareColumns($result);
             $result->setMultiEditAllowed($this->GetSecurityInfo()->HasEditGrant() && true);
             $result->setTableBordered(false);
             $result->setTableCondensed(false);
             
-            $result->SetHighlightRowAtHover(false);
+            $result->SetHighlightRowAtHover(true);
             $result->SetWidth('');
-            $this->AddOperationsColumns($result);
+    
             $this->AddFieldColumns($result);
             $this->AddSingleRecordViewColumns($result);
             $this->AddEditColumns($result);
@@ -683,7 +584,7 @@
             $this->AddExportColumns($result);
             $this->AddMultiUploadColumn($result);
     
-    
+            $this->AddOperationsColumns($result);
             $this->SetShowPageList(true);
             $this->SetShowTopPageNavigator(true);
             $this->SetShowBottomPageNavigator(true);
@@ -691,10 +592,10 @@
             $this->setPrintListRecordAvailable(false);
             $this->setPrintOneRecordAvailable(true);
             $this->setAllowPrintSelectedRecords(true);
-            $this->setExportListAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
-            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportListAvailable(array('pdf', 'excel', 'word'));
+            $this->setExportSelectedRecordsAvailable(array('pdf', 'excel', 'word'));
             $this->setExportListRecordAvailable(array());
-            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word', 'xml', 'csv'));
+            $this->setExportOneRecordAvailable(array('pdf', 'excel', 'word'));
     
             return $result;
         }
@@ -854,8 +755,8 @@
 
     try
     {
-        $Page = new pelajaranPage("pelajaran", "pelajaran.php", GetCurrentUserPermissionsForPage("pelajaran"), 'UTF-8');
-        $Page->SetRecordPermission(GetCurrentUserRecordPermissionsForDataSource("pelajaran"));
+        $Page = new admin_usersPage("admin_users", "admin_users.php", GetCurrentUserPermissionsForPage("admin_users"), 'UTF-8');
+        $Page->SetRecordPermission(GetCurrentUserRecordPermissionsForDataSource("admin_users"));
         GetApplication()->SetMainPage($Page);
         GetApplication()->Run();
     }

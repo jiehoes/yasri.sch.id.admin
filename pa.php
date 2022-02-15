@@ -31,21 +31,21 @@
     
     
     
-    class semesterPage extends Page
+    class paPage extends Page
     {
         protected function DoBeforeCreate()
         {
-            $this->SetTitle('Semester');
-            $this->SetMenuLabel('Semester');
+            $this->SetTitle('Program Keahlian');
+            $this->SetMenuLabel('Program Keahlian');
     
             $this->dataset = new TableDataset(
                 MySqlIConnectionFactory::getInstance(),
                 GetConnectionOptions(),
-                '`semester`');
+                '`pa`');
             $this->dataset->addFields(
                 array(
-                    new IntegerField('idsem', true, true, true),
-                    new IntegerField('semester')
+                    new IntegerField('pa_id', true, true, true),
+                    new StringField('pa')
                 )
             );
         }
@@ -78,16 +78,15 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'idsem', 'idsem', 'Idsem'),
-                new FilterColumn($this->dataset, 'semester', 'semester', 'Semester')
+                new FilterColumn($this->dataset, 'pa_id', 'pa_id', 'ID'),
+                new FilterColumn($this->dataset, 'pa', 'pa', 'Program Keahlian')
             );
         }
     
         protected function setupQuickFilter(QuickFilter $quickFilter, FixedKeysArray $columns)
         {
             $quickFilter
-                ->addColumn($columns['idsem'])
-                ->addColumn($columns['semester']);
+                ->addColumn($columns['pa']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -97,10 +96,11 @@
     
         protected function setupFilterBuilder(FilterBuilder $filterBuilder, FixedKeysArray $columns)
         {
-            $main_editor = new TextEdit('idsem_edit');
+            $main_editor = new TextEdit('pa_edit');
+            $main_editor->SetMaxLength(50);
             
             $filterBuilder->addColumn(
-                $columns['idsem'],
+                $columns['pa'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -110,24 +110,12 @@
                     FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
                     FilterConditionOperator::IS_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('semester_edit');
-            
-            $filterBuilder->addColumn(
-                $columns['semester'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
+                    FilterConditionOperator::BEGINS_WITH => $main_editor,
+                    FilterConditionOperator::ENDS_WITH => $main_editor,
+                    FilterConditionOperator::IS_LIKE => $main_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -162,9 +150,9 @@
         protected function AddFieldColumns(Grid $grid, $withDetails = true)
         {
             //
-            // View column for idsem field
+            // View column for pa_id field
             //
-            $column = new NumberViewColumn('idsem', 'idsem', 'Idsem', $this->dataset);
+            $column = new NumberViewColumn('pa_id', 'pa_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -175,13 +163,10 @@
             $grid->AddViewColumn($column);
             
             //
-            // View column for semester field
+            // View column for pa field
             //
-            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column = new TextViewColumn('pa', 'pa', 'Program Keahlian', $this->dataset);
             $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
@@ -191,9 +176,9 @@
         protected function AddSingleRecordViewColumns(Grid $grid)
         {
             //
-            // View column for idsem field
+            // View column for pa_id field
             //
-            $column = new NumberViewColumn('idsem', 'idsem', 'Idsem', $this->dataset);
+            $column = new NumberViewColumn('pa_id', 'pa_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -201,23 +186,21 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for semester field
+            // View column for pa field
             //
-            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column = new TextViewColumn('pa', 'pa', 'Program Keahlian', $this->dataset);
             $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddSingleRecordViewColumn($column);
         }
     
         protected function AddEditColumns(Grid $grid)
         {
             //
-            // Edit column for semester field
+            // Edit column for pa field
             //
-            $editor = new TextEdit('semester_edit');
-            $editColumn = new CustomEditColumn('Semester', 'semester', $editor, $this->dataset);
+            $editor = new TextEdit('pa_edit');
+            $editor->SetMaxLength(50);
+            $editColumn = new CustomEditColumn('Program Keahlian', 'pa', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
@@ -226,10 +209,11 @@
         protected function AddMultiEditColumns(Grid $grid)
         {
             //
-            // Edit column for semester field
+            // Edit column for pa field
             //
-            $editor = new TextEdit('semester_edit');
-            $editColumn = new CustomEditColumn('Semester', 'semester', $editor, $this->dataset);
+            $editor = new TextEdit('pa_edit');
+            $editor->SetMaxLength(50);
+            $editColumn = new CustomEditColumn('Program Keahlian', 'pa', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
@@ -238,10 +222,11 @@
         protected function AddInsertColumns(Grid $grid)
         {
             //
-            // Edit column for semester field
+            // Edit column for pa field
             //
-            $editor = new TextEdit('semester_edit');
-            $editColumn = new CustomEditColumn('Semester', 'semester', $editor, $this->dataset);
+            $editor = new TextEdit('pa_edit');
+            $editor->SetMaxLength(50);
+            $editColumn = new CustomEditColumn('Program Keahlian', 'pa', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
@@ -256,9 +241,9 @@
         protected function AddPrintColumns(Grid $grid)
         {
             //
-            // View column for idsem field
+            // View column for pa_id field
             //
-            $column = new NumberViewColumn('idsem', 'idsem', 'Idsem', $this->dataset);
+            $column = new NumberViewColumn('pa_id', 'pa_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -266,22 +251,19 @@
             $grid->AddPrintColumn($column);
             
             //
-            // View column for semester field
+            // View column for pa field
             //
-            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column = new TextViewColumn('pa', 'pa', 'Program Keahlian', $this->dataset);
             $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddPrintColumn($column);
         }
     
         protected function AddExportColumns(Grid $grid)
         {
             //
-            // View column for idsem field
+            // View column for pa_id field
             //
-            $column = new NumberViewColumn('idsem', 'idsem', 'Idsem', $this->dataset);
+            $column = new NumberViewColumn('pa_id', 'pa_id', 'ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -289,26 +271,20 @@
             $grid->AddExportColumn($column);
             
             //
-            // View column for semester field
+            // View column for pa field
             //
-            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column = new TextViewColumn('pa', 'pa', 'Program Keahlian', $this->dataset);
             $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddExportColumn($column);
         }
     
         private function AddCompareColumns(Grid $grid)
         {
             //
-            // View column for semester field
+            // View column for pa field
             //
-            $column = new NumberViewColumn('semester', 'semester', 'Semester', $this->dataset);
+            $column = new TextViewColumn('pa', 'pa', 'Program Keahlian', $this->dataset);
             $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
             $grid->AddCompareColumn($column);
         }
     
@@ -548,8 +524,8 @@
 
     try
     {
-        $Page = new semesterPage("semester", "semester.php", GetCurrentUserPermissionsForPage("semester"), 'UTF-8');
-        $Page->SetRecordPermission(GetCurrentUserRecordPermissionsForDataSource("semester"));
+        $Page = new paPage("pa", "pa.php", GetCurrentUserPermissionsForPage("pa"), 'UTF-8');
+        $Page->SetRecordPermission(GetCurrentUserRecordPermissionsForDataSource("pa"));
         GetApplication()->SetMainPage($Page);
         GetApplication()->Run();
     }
