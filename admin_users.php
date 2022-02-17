@@ -44,7 +44,7 @@
                 '`admin_users`');
             $this->dataset->addFields(
                 array(
-                    new IntegerField('user_id', true, true, true),
+                    new IntegerField('admin_id', true, true, true),
                     new StringField('user_name', true),
                     new StringField('user_password', true),
                     new StringField('user_email', true),
@@ -82,22 +82,22 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'user_id', 'user_id', 'User Id'),
                 new FilterColumn($this->dataset, 'user_name', 'user_name', 'User Name'),
                 new FilterColumn($this->dataset, 'user_password', 'user_password', 'User Password'),
                 new FilterColumn($this->dataset, 'user_email', 'user_email', 'User Email'),
                 new FilterColumn($this->dataset, 'user_token', 'user_token', 'User Token'),
-                new FilterColumn($this->dataset, 'user_status', 'user_status', 'User Status')
+                new FilterColumn($this->dataset, 'user_status', 'user_status', 'User Status'),
+                new FilterColumn($this->dataset, 'admin_id', 'admin_id', 'Admin Id')
             );
         }
     
         protected function setupQuickFilter(QuickFilter $quickFilter, FixedKeysArray $columns)
         {
             $quickFilter
-                ->addColumn($columns['user_id'])
                 ->addColumn($columns['user_name'])
                 ->addColumn($columns['user_email'])
-                ->addColumn($columns['user_status']);
+                ->addColumn($columns['user_status'])
+                ->addColumn($columns['admin_id']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -107,24 +107,6 @@
     
         protected function setupFilterBuilder(FilterBuilder $filterBuilder, FixedKeysArray $columns)
         {
-            $main_editor = new TextEdit('user_id_edit');
-            
-            $filterBuilder->addColumn(
-                $columns['user_id'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
             $main_editor = new TextEdit('user_name');
             
             $filterBuilder->addColumn(
@@ -190,6 +172,24 @@
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
             );
+            
+            $main_editor = new TextEdit('admin_id_edit');
+            
+            $filterBuilder->addColumn(
+                $columns['admin_id'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
         }
     
         protected function AddOperationsColumns(Grid $grid)
@@ -219,19 +219,6 @@
     
         protected function AddFieldColumns(Grid $grid, $withDetails = true)
         {
-            //
-            // View column for user_id field
-            //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
             //
             // View column for user_name field
             //
@@ -266,20 +253,23 @@
             $column->SetDescription('0 = OK, 1 = Account verification required, 2 = Password reset requested.');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
-        }
-    
-        protected function AddSingleRecordViewColumns(Grid $grid)
-        {
+            
             //
-            // View column for user_id field
+            // View column for admin_id field
             //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
+            $column = new NumberViewColumn('admin_id', 'admin_id', 'Admin Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddSingleRecordViewColumn($column);
-            
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+        }
+    
+        protected function AddSingleRecordViewColumns(Grid $grid)
+        {
             //
             // View column for user_name field
             //
@@ -300,6 +290,16 @@
             // View column for user_status field
             //
             $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for admin_id field
+            //
+            $column = new NumberViewColumn('admin_id', 'admin_id', 'Admin Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -338,6 +338,16 @@
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for admin_id field
+            //
+            $editor = new TextEdit('admin_id_edit');
+            $editColumn = new CustomEditColumn('Admin Id', 'admin_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
         }
     
         protected function AddMultiEditColumns(Grid $grid)
@@ -367,6 +377,16 @@
             //
             $editor = new TextEdit('user_status_edit');
             $editColumn = new CustomEditColumn('User Status', 'user_status', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for admin_id field
+            //
+            $editor = new TextEdit('admin_id_edit');
+            $editColumn = new CustomEditColumn('Admin Id', 'admin_id', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -404,6 +424,16 @@
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for admin_id field
+            //
+            $editor = new TextEdit('admin_id_edit');
+            $editColumn = new CustomEditColumn('Admin Id', 'admin_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
             $grid->SetShowAddButton(true && $this->GetSecurityInfo()->HasAddGrant());
         }
     
@@ -415,16 +445,6 @@
         protected function AddPrintColumns(Grid $grid)
         {
             //
-            // View column for user_id field
-            //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for user_name field
             //
             $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
@@ -444,6 +464,16 @@
             // View column for user_status field
             //
             $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for admin_id field
+            //
+            $column = new NumberViewColumn('admin_id', 'admin_id', 'Admin Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -454,16 +484,6 @@
         protected function AddExportColumns(Grid $grid)
         {
             //
-            // View column for user_id field
-            //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for user_name field
             //
             $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
@@ -483,6 +503,16 @@
             // View column for user_status field
             //
             $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for admin_id field
+            //
+            $column = new NumberViewColumn('admin_id', 'admin_id', 'Admin Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -512,6 +542,16 @@
             // View column for user_status field
             //
             $column = new NumberViewColumn('user_status', 'user_status', 'User Status', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for admin_id field
+            //
+            $column = new NumberViewColumn('admin_id', 'admin_id', 'Admin Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');

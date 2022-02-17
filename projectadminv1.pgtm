@@ -750,12 +750,6 @@
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
             <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
@@ -778,87 +772,93 @@
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="admin_id" caption="Admin Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </List>
           <View>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </View>
           <Edit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </Edit>
           <Insert>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </Insert>
           <QuickFilter>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </Print>
           <Export>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </Export>
           <Compare>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
             <Column fieldName="user_status"/>
+            <Column fieldName="admin_id"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -869,12 +869,6 @@
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
             <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
@@ -996,10 +990,15 @@
             <ViewProperties type="download"/>
             <EditProperties type="fileUpload"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="guru_id" caption="Guru Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1026,9 +1025,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </List>
           <View>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1055,9 +1054,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </View>
           <Edit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1084,9 +1083,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </Edit>
           <Insert>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1113,9 +1112,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </Insert>
           <QuickFilter>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1142,9 +1141,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1171,9 +1170,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1200,9 +1199,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </Print>
           <Export>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1229,9 +1228,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </Export>
           <Compare>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1258,9 +1257,9 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -1287,6 +1286,7 @@
             <Column fieldName="dokumen_ijasah_terakhir"/>
             <Column fieldName="dokumen_sertifikat"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="guru_id"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -1297,12 +1297,6 @@
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="kelas_id" caption="Kelas Id" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="comboBox">
@@ -1469,10 +1463,15 @@
             <ViewProperties type="download"/>
             <EditProperties type="fileUpload"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="siswa_id" caption="Siswa Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="user_id"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1506,9 +1505,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </List>
           <View>
-            <Column fieldName="user_id"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1542,9 +1541,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </View>
           <Edit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1578,9 +1577,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </Edit>
           <Insert>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1614,9 +1613,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </Insert>
           <QuickFilter>
-            <Column fieldName="user_id"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1650,9 +1649,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="user_id"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1686,9 +1685,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="user_id"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1722,9 +1721,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </Print>
           <Export>
-            <Column fieldName="user_id"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1758,9 +1757,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </Export>
           <Compare>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1794,9 +1793,9 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="kelas_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
@@ -1830,6 +1829,7 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="siswa_id"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -1840,12 +1840,6 @@
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1573119">
-            <ViewProperties type="text">
-              <Format type="number" thousandSeparator=","/>
-            </ViewProperties>
-            <EditProperties type="textBox" maxLength="0"/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="user_name" caption="User Name" showColumnFilter="false" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
             <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
@@ -2018,10 +2012,61 @@
             <ViewProperties type="download"/>
             <EditProperties type="fileUpload"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="ppdb_id" caption="Ppdb Id" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="hasil" caption="Hasil" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Pendaftar dalam proses seleksi administrasi" caption="Pendaftar dalam proses seleksi administrasi"/>
+                <Value name="Selamat! Pendaftar diterima di SMK YASRI" caption="Selamat! Pendaftar diterima di SMK YASRI"/>
+                <Value name="Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu" caption="Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu"/>
+                <Value name="Pendaftar tidak lolos pendaftaran di SMK YASRI" caption="Pendaftar tidak lolos pendaftaran di SMK YASRI"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="hasil_alasan" caption="Hasil Alasan" showColumnFilter="false" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="penghasilan_orangtua" caption="Penghasilan Orangtua" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="Kurang dari 1juta/bulan" caption="Kurang dari 1juta/bulan"/>
+                <Value name="1juta-3juta/bulan" caption="1juta-3juta/bulan"/>
+                <Value name="3juta-5juta/bulan" caption="3juta-5juta/bulan"/>
+                <Value name="Lebih dari 5juta/bulan" caption="Lebih dari 5juta/bulan"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_ktp_ortu" caption="Dokumen Ktp Ortu" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_kelakuan_baik" caption="Dokumen Kelakuan Baik" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_keterangan_kesehatan" caption="Dokumen Keterangan Kesehatan" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_ijasah" caption="Dokumen Ijasah" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="dokumen_transkrip" caption="Dokumen Transkrip" selectedFilterOperators="1572864">
+            <ViewProperties type="download"/>
+            <EditProperties type="fileUpload"/>
+          </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2056,9 +2101,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </List>
           <View>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2093,9 +2146,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </View>
           <Edit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2130,9 +2191,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </Edit>
           <Insert>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2167,9 +2236,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </Insert>
           <QuickFilter>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2204,9 +2281,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </QuickFilter>
           <FilterBuilder>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2241,9 +2326,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </FilterBuilder>
           <Print>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2278,9 +2371,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </Print>
           <Export>
-            <Column fieldName="user_id"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2315,9 +2416,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </Export>
           <Compare>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2352,9 +2461,17 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </Compare>
           <MultiEdit>
-            <Column fieldName="user_id" visible="false"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
@@ -2389,6 +2506,15 @@
             <Column fieldName="dokumen_kk"/>
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
+            <Column fieldName="ppdb_id"/>
+            <Column fieldName="hasil"/>
+            <Column fieldName="hasil_alasan"/>
+            <Column fieldName="penghasilan_orangtua"/>
+            <Column fieldName="dokumen_ktp_ortu"/>
+            <Column fieldName="dokumen_kelakuan_baik"/>
+            <Column fieldName="dokumen_keterangan_kesehatan"/>
+            <Column fieldName="dokumen_ijasah"/>
+            <Column fieldName="dokumen_transkrip"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -2396,10 +2522,54 @@
         <PartitionNavigators/>
       </Page>
     </Pages>
-    <UserAuthorization type="tableBased" tableName="admin_users" userIdField="user_id" userNameField="user_name" passwordField="user_password" userEmailField="user_email" userTokenField="user_token" userStatusField="user_status" passwordEncryption="MD5" allowUserToChangePassword="true" recoveringPasswordEnabled="true"/>
+    <UserAuthorization type="tableBased" tableName="admin_users" userIdField="admin_id" userNameField="user_name" passwordField="user_password" userEmailField="user_email" userTokenField="user_token" userStatusField="user_status" passwordEncryption="MD5" allowUserToChangePassword="true" recoveringPasswordEnabled="true"/>
     <UserGrants enableGuestAccess="false" storageType="table">
       <UserGrantsStorage userPermsTableName="admin_user_perms" userPermsUserId="user_id" userPermsPageName="page_name" userPermsAcl="perm_name"/>
     </UserGrants>
+    <EventHandlers>
+      <OnGetCustomTemplate enabled="true">
+if ($part == PagePart::Mail &amp;&amp; $mode == PageMode::MailVerificationBody) {
+  $result = 'mail/user_verification_body.tpl';
+}
+
+if ($part == PagePart::Mail &amp;&amp; $mode == PageMode::MailVerificationSubject) {
+  $result = 'mail/user_verification_subject.tpl';
+}
+
+if ($part == PagePart::Mail &amp;&amp; $mode == PageMode::MailRecoveringPasswordSubject) {
+  $result = 'mail/recovering_password_subject.tpl';
+}
+
+if ($part == PagePart::Mail &amp;&amp; $mode == PageMode::MailRecoveringPasswordBody) {
+  $result = 'mail/recovering_password_body.tpl';
+}
+
+
+
+
+if ($part == PagePart::LoginPage) {
+  $result = 'login/login_page.tpl';
+}
+
+if ($part == PagePart::LoginControl) {
+  $result = 'login/login_control.tpl';
+}
+
+
+if ($part == PagePart::RegistrationPage) {
+  $result = 'registration/registration_page.tpl';
+}
+
+if ($part == PagePart::RegistrationForm) {
+  $result = 'registration/registration_form.tpl';
+}
+
+
+
+if ($part == PagePart::Layout) {
+  $result = 'common/layout.tpl';
+}      </OnGetCustomTemplate>
+    </EventHandlers>
     <Header/>
     <Footer/>
     <PHPOptions/>

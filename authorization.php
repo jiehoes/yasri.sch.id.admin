@@ -28,7 +28,7 @@ $tableCaptions = array('kelas' => 'Kelas',
 
 $usersTableInfo = array(
     'TableName' => 'admin_users',
-    'UserId' => 'user_id',
+    'UserId' => 'admin_id',
     'UserName' => 'user_name',
     'Password' => 'user_password',
     'Email' => 'user_email',

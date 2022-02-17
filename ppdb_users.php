@@ -44,7 +44,9 @@
                 '`ppdb_users`');
             $this->dataset->addFields(
                 array(
-                    new IntegerField('user_id', true, true, true),
+                    new IntegerField('ppdb_id', true, true, true),
+                    new StringField('hasil'),
+                    new StringField('hasil_alasan', true),
                     new StringField('user_name', true),
                     new StringField('user_password', true),
                     new StringField('user_email', true),
@@ -53,6 +55,7 @@
                     new StringField('jenis_kelamin'),
                     new StringField('pindah_sekolah'),
                     new StringField('pindahan_kelas'),
+                    new StringField('penghasilan_orangtua'),
                     new StringField('nama_ayah_wali'),
                     new IntegerField('no_ktp_ayah'),
                     new StringField('nama_ibu'),
@@ -76,9 +79,14 @@
                     new IntegerField('user_status', true),
                     new IntegerField('tahun_ajaran', true),
                     new DateTimeField('tanggal_update', true),
+                    new BlobField('dokumen_ktp_ortu', true),
                     new BlobField('dokumen_kk', true),
                     new BlobField('dokumen_akte_kelahiran', true),
-                    new BlobField('dokumen_pas_foto', true)
+                    new BlobField('dokumen_pas_foto', true),
+                    new BlobField('dokumen_kelakuan_baik', true),
+                    new BlobField('dokumen_keterangan_kesehatan', true),
+                    new BlobField('dokumen_ijasah', true),
+                    new BlobField('dokumen_transkrip', true)
                 )
             );
         }
@@ -111,7 +119,6 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'user_id', 'user_id', 'User Id'),
                 new FilterColumn($this->dataset, 'user_name', 'user_name', 'User Name'),
                 new FilterColumn($this->dataset, 'user_password', 'user_password', 'User Password'),
                 new FilterColumn($this->dataset, 'user_email', 'user_email', 'User Email'),
@@ -145,14 +152,22 @@
                 new FilterColumn($this->dataset, 'tanggal_update', 'tanggal_update', 'Tanggal Update'),
                 new FilterColumn($this->dataset, 'dokumen_kk', 'dokumen_kk', 'Dokumen Kk'),
                 new FilterColumn($this->dataset, 'dokumen_akte_kelahiran', 'dokumen_akte_kelahiran', 'Dokumen Akte Kelahiran'),
-                new FilterColumn($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto')
+                new FilterColumn($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto'),
+                new FilterColumn($this->dataset, 'ppdb_id', 'ppdb_id', 'Ppdb Id'),
+                new FilterColumn($this->dataset, 'hasil', 'hasil', 'Hasil'),
+                new FilterColumn($this->dataset, 'hasil_alasan', 'hasil_alasan', 'Hasil Alasan'),
+                new FilterColumn($this->dataset, 'penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua'),
+                new FilterColumn($this->dataset, 'dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu'),
+                new FilterColumn($this->dataset, 'dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik'),
+                new FilterColumn($this->dataset, 'dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan', 'Dokumen Keterangan Kesehatan'),
+                new FilterColumn($this->dataset, 'dokumen_ijasah', 'dokumen_ijasah', 'Dokumen Ijasah'),
+                new FilterColumn($this->dataset, 'dokumen_transkrip', 'dokumen_transkrip', 'Dokumen Transkrip')
             );
         }
     
         protected function setupQuickFilter(QuickFilter $quickFilter, FixedKeysArray $columns)
         {
             $quickFilter
-                ->addColumn($columns['user_id'])
                 ->addColumn($columns['user_name'])
                 ->addColumn($columns['user_email'])
                 ->addColumn($columns['nama'])
@@ -184,7 +199,16 @@
                 ->addColumn($columns['tanggal_update'])
                 ->addColumn($columns['dokumen_kk'])
                 ->addColumn($columns['dokumen_akte_kelahiran'])
-                ->addColumn($columns['dokumen_pas_foto']);
+                ->addColumn($columns['dokumen_pas_foto'])
+                ->addColumn($columns['ppdb_id'])
+                ->addColumn($columns['hasil'])
+                ->addColumn($columns['hasil_alasan'])
+                ->addColumn($columns['penghasilan_orangtua'])
+                ->addColumn($columns['dokumen_ktp_ortu'])
+                ->addColumn($columns['dokumen_kelakuan_baik'])
+                ->addColumn($columns['dokumen_keterangan_kesehatan'])
+                ->addColumn($columns['dokumen_ijasah'])
+                ->addColumn($columns['dokumen_transkrip']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -197,29 +221,18 @@
                 ->setOptionsFor('tanggal_update')
                 ->setOptionsFor('dokumen_kk')
                 ->setOptionsFor('dokumen_akte_kelahiran')
-                ->setOptionsFor('dokumen_pas_foto');
+                ->setOptionsFor('dokumen_pas_foto')
+                ->setOptionsFor('hasil')
+                ->setOptionsFor('penghasilan_orangtua')
+                ->setOptionsFor('dokumen_ktp_ortu')
+                ->setOptionsFor('dokumen_kelakuan_baik')
+                ->setOptionsFor('dokumen_keterangan_kesehatan')
+                ->setOptionsFor('dokumen_ijasah')
+                ->setOptionsFor('dokumen_transkrip');
         }
     
         protected function setupFilterBuilder(FilterBuilder $filterBuilder, FixedKeysArray $columns)
         {
-            $main_editor = new TextEdit('user_id_edit');
-            
-            $filterBuilder->addColumn(
-                $columns['user_id'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
             $main_editor = new TextEdit('user_name');
             
             $filterBuilder->addColumn(
@@ -911,6 +924,170 @@
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
             );
+            
+            $main_editor = new TextEdit('ppdb_id_edit');
+            
+            $filterBuilder->addColumn(
+                $columns['ppdb_id'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $main_editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
+            $main_editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
+            $main_editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
+            $main_editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
+            $main_editor->SetAllowNullValue(false);
+            
+            $multi_value_select_editor = new MultiValueSelect('hasil');
+            $multi_value_select_editor->setChoices($main_editor->getChoices());
+            
+            $text_editor = new TextEdit('hasil');
+            
+            $filterBuilder->addColumn(
+                $columns['hasil'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $text_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $text_editor,
+                    FilterConditionOperator::BEGINS_WITH => $text_editor,
+                    FilterConditionOperator::ENDS_WITH => $text_editor,
+                    FilterConditionOperator::IS_LIKE => $text_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $text_editor,
+                    FilterConditionOperator::IN => $multi_value_select_editor,
+                    FilterConditionOperator::NOT_IN => $multi_value_select_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('hasil_alasan');
+            
+            $filterBuilder->addColumn(
+                $columns['hasil_alasan'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
+                    FilterConditionOperator::BEGINS_WITH => $main_editor,
+                    FilterConditionOperator::ENDS_WITH => $main_editor,
+                    FilterConditionOperator::IS_LIKE => $main_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $main_editor->addChoice('Kurang dari 1juta/bulan', 'Kurang dari 1juta/bulan');
+            $main_editor->addChoice('1juta-3juta/bulan', '1juta-3juta/bulan');
+            $main_editor->addChoice('3juta-5juta/bulan', '3juta-5juta/bulan');
+            $main_editor->addChoice('Lebih dari 5juta/bulan', 'Lebih dari 5juta/bulan');
+            $main_editor->SetAllowNullValue(false);
+            
+            $multi_value_select_editor = new MultiValueSelect('penghasilan_orangtua');
+            $multi_value_select_editor->setChoices($main_editor->getChoices());
+            
+            $text_editor = new TextEdit('penghasilan_orangtua');
+            
+            $filterBuilder->addColumn(
+                $columns['penghasilan_orangtua'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $text_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $text_editor,
+                    FilterConditionOperator::BEGINS_WITH => $text_editor,
+                    FilterConditionOperator::ENDS_WITH => $text_editor,
+                    FilterConditionOperator::IS_LIKE => $text_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $text_editor,
+                    FilterConditionOperator::IN => $multi_value_select_editor,
+                    FilterConditionOperator::NOT_IN => $multi_value_select_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('dokumen_ktp_ortu');
+            
+            $filterBuilder->addColumn(
+                $columns['dokumen_ktp_ortu'],
+                array(
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('dokumen_kelakuan_baik');
+            
+            $filterBuilder->addColumn(
+                $columns['dokumen_kelakuan_baik'],
+                array(
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('dokumen_keterangan_kesehatan');
+            
+            $filterBuilder->addColumn(
+                $columns['dokumen_keterangan_kesehatan'],
+                array(
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('dokumen_ijasah');
+            
+            $filterBuilder->addColumn(
+                $columns['dokumen_ijasah'],
+                array(
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('dokumen_transkrip');
+            
+            $filterBuilder->addColumn(
+                $columns['dokumen_transkrip'],
+                array(
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
         }
     
         protected function AddOperationsColumns(Grid $grid)
@@ -940,19 +1117,6 @@
     
         protected function AddFieldColumns(Grid $grid, $withDetails = true)
         {
-            //
-            // View column for user_id field
-            //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
             //
             // View column for user_name field
             //
@@ -1317,20 +1481,104 @@
             $column->SetDescription('');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
-        }
-    
-        protected function AddSingleRecordViewColumns(Grid $grid)
-        {
+            
             //
-            // View column for user_id field
+            // View column for ppdb_id field
             //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
+            $column = new NumberViewColumn('ppdb_id', 'ppdb_id', 'Ppdb Id', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddSingleRecordViewColumn($column);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
             
+            //
+            // View column for hasil field
+            //
+            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for hasil_alasan field
+            //
+            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->SetMaxLength(75);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for penghasilan_orangtua field
+            //
+            $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for dokumen_ktp_ortu field
+            //
+            $column = new DownloadDataColumn('dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for dokumen_kelakuan_baik field
+            //
+            $column = new DownloadDataColumn('dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for dokumen_keterangan_kesehatan field
+            //
+            $column = new DownloadDataColumn('dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan', 'Dokumen Keterangan Kesehatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for dokumen_ijasah field
+            //
+            $column = new DownloadDataColumn('dokumen_ijasah', 'dokumen_ijasah', 'Dokumen Ijasah', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for dokumen_transkrip field
+            //
+            $column = new DownloadDataColumn('dokumen_transkrip', 'dokumen_transkrip', 'Dokumen Transkrip', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+        }
+    
+        protected function AddSingleRecordViewColumns(Grid $grid)
+        {
             //
             // View column for user_name field
             //
@@ -1597,6 +1845,73 @@
             // View column for dokumen_pas_foto field
             //
             $column = new DownloadDataColumn('dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for ppdb_id field
+            //
+            $column = new NumberViewColumn('ppdb_id', 'ppdb_id', 'Ppdb Id', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for hasil field
+            //
+            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for hasil_alasan field
+            //
+            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->SetMaxLength(75);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for penghasilan_orangtua field
+            //
+            $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for dokumen_ktp_ortu field
+            //
+            $column = new DownloadDataColumn('dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for dokumen_kelakuan_baik field
+            //
+            $column = new DownloadDataColumn('dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for dokumen_keterangan_kesehatan field
+            //
+            $column = new DownloadDataColumn('dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan', 'Dokumen Keterangan Kesehatan', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for dokumen_ijasah field
+            //
+            $column = new DownloadDataColumn('dokumen_ijasah', 'dokumen_ijasah', 'Dokumen Ijasah', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for dokumen_transkrip field
+            //
+            $column = new DownloadDataColumn('dokumen_transkrip', 'dokumen_transkrip', 'Dokumen Transkrip', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddSingleRecordViewColumn($column);
         }
@@ -1905,6 +2220,107 @@
             $editor = new ImageUploader('dokumen_pas_foto_edit');
             $editor->SetShowImage(false);
             $editColumn = new FileUploadingColumn('Dokumen Pas Foto', 'dokumen_pas_foto', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_pas_foto_handler_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for ppdb_id field
+            //
+            $editor = new TextEdit('ppdb_id_edit');
+            $editColumn = new CustomEditColumn('Ppdb Id', 'ppdb_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for hasil field
+            //
+            $editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
+            $editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
+            $editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
+            $editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
+            $editColumn = new CustomEditColumn('Hasil', 'hasil', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for hasil_alasan field
+            //
+            $editor = new TextAreaEdit('hasil_alasan_edit', 50, 8);
+            $editColumn = new CustomEditColumn('Hasil Alasan', 'hasil_alasan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for penghasilan_orangtua field
+            //
+            $editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('Kurang dari 1juta/bulan', 'Kurang dari 1juta/bulan');
+            $editor->addChoice('1juta-3juta/bulan', '1juta-3juta/bulan');
+            $editor->addChoice('3juta-5juta/bulan', '3juta-5juta/bulan');
+            $editor->addChoice('Lebih dari 5juta/bulan', 'Lebih dari 5juta/bulan');
+            $editColumn = new CustomEditColumn('Penghasilan Orangtua', 'penghasilan_orangtua', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_ktp_ortu field
+            //
+            $editor = new ImageUploader('dokumen_ktp_ortu_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Ktp Ortu', 'dokumen_ktp_ortu', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_ktp_ortu_handler_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_kelakuan_baik field
+            //
+            $editor = new ImageUploader('dokumen_kelakuan_baik_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Kelakuan Baik', 'dokumen_kelakuan_baik', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_kelakuan_baik_handler_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_keterangan_kesehatan field
+            //
+            $editor = new ImageUploader('dokumen_keterangan_kesehatan_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Keterangan Kesehatan', 'dokumen_keterangan_kesehatan', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_keterangan_kesehatan_handler_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_ijasah field
+            //
+            $editor = new ImageUploader('dokumen_ijasah_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Ijasah', 'dokumen_ijasah', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_ijasah_handler_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_transkrip field
+            //
+            $editor = new ImageUploader('dokumen_transkrip_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Transkrip', 'dokumen_transkrip', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_transkrip_handler_edit');
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -2219,6 +2635,107 @@
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for ppdb_id field
+            //
+            $editor = new TextEdit('ppdb_id_edit');
+            $editColumn = new CustomEditColumn('Ppdb Id', 'ppdb_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for hasil field
+            //
+            $editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
+            $editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
+            $editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
+            $editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
+            $editColumn = new CustomEditColumn('Hasil', 'hasil', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for hasil_alasan field
+            //
+            $editor = new TextAreaEdit('hasil_alasan_edit', 50, 8);
+            $editColumn = new CustomEditColumn('Hasil Alasan', 'hasil_alasan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for penghasilan_orangtua field
+            //
+            $editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('Kurang dari 1juta/bulan', 'Kurang dari 1juta/bulan');
+            $editor->addChoice('1juta-3juta/bulan', '1juta-3juta/bulan');
+            $editor->addChoice('3juta-5juta/bulan', '3juta-5juta/bulan');
+            $editor->addChoice('Lebih dari 5juta/bulan', 'Lebih dari 5juta/bulan');
+            $editColumn = new CustomEditColumn('Penghasilan Orangtua', 'penghasilan_orangtua', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_ktp_ortu field
+            //
+            $editor = new ImageUploader('dokumen_ktp_ortu_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Ktp Ortu', 'dokumen_ktp_ortu', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_ktp_ortu_handler_multi_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_kelakuan_baik field
+            //
+            $editor = new ImageUploader('dokumen_kelakuan_baik_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Kelakuan Baik', 'dokumen_kelakuan_baik', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_kelakuan_baik_handler_multi_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_keterangan_kesehatan field
+            //
+            $editor = new ImageUploader('dokumen_keterangan_kesehatan_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Keterangan Kesehatan', 'dokumen_keterangan_kesehatan', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_keterangan_kesehatan_handler_multi_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_ijasah field
+            //
+            $editor = new ImageUploader('dokumen_ijasah_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Ijasah', 'dokumen_ijasah', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_ijasah_handler_multi_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_transkrip field
+            //
+            $editor = new ImageUploader('dokumen_transkrip_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Transkrip', 'dokumen_transkrip', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_transkrip_handler_multi_edit');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
         }
     
         protected function AddInsertColumns(Grid $grid)
@@ -2529,6 +3046,107 @@
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for ppdb_id field
+            //
+            $editor = new TextEdit('ppdb_id_edit');
+            $editColumn = new CustomEditColumn('Ppdb Id', 'ppdb_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for hasil field
+            //
+            $editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
+            $editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
+            $editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
+            $editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
+            $editColumn = new CustomEditColumn('Hasil', 'hasil', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for hasil_alasan field
+            //
+            $editor = new TextAreaEdit('hasil_alasan_edit', 50, 8);
+            $editColumn = new CustomEditColumn('Hasil Alasan', 'hasil_alasan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for penghasilan_orangtua field
+            //
+            $editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('Kurang dari 1juta/bulan', 'Kurang dari 1juta/bulan');
+            $editor->addChoice('1juta-3juta/bulan', '1juta-3juta/bulan');
+            $editor->addChoice('3juta-5juta/bulan', '3juta-5juta/bulan');
+            $editor->addChoice('Lebih dari 5juta/bulan', 'Lebih dari 5juta/bulan');
+            $editColumn = new CustomEditColumn('Penghasilan Orangtua', 'penghasilan_orangtua', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_ktp_ortu field
+            //
+            $editor = new ImageUploader('dokumen_ktp_ortu_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Ktp Ortu', 'dokumen_ktp_ortu', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_ktp_ortu_handler_insert');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_kelakuan_baik field
+            //
+            $editor = new ImageUploader('dokumen_kelakuan_baik_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Kelakuan Baik', 'dokumen_kelakuan_baik', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_kelakuan_baik_handler_insert');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_keterangan_kesehatan field
+            //
+            $editor = new ImageUploader('dokumen_keterangan_kesehatan_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Keterangan Kesehatan', 'dokumen_keterangan_kesehatan', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_keterangan_kesehatan_handler_insert');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_ijasah field
+            //
+            $editor = new ImageUploader('dokumen_ijasah_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Ijasah', 'dokumen_ijasah', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_ijasah_handler_insert');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for dokumen_transkrip field
+            //
+            $editor = new ImageUploader('dokumen_transkrip_edit');
+            $editor->SetShowImage(false);
+            $editColumn = new FileUploadingColumn('Dokumen Transkrip', 'dokumen_transkrip', $editor, $this->dataset, false, false, 'ppdb_users_dokumen_transkrip_handler_insert');
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
             $grid->SetShowAddButton(true && $this->GetSecurityInfo()->HasAddGrant());
         }
     
@@ -2540,16 +3158,6 @@
         protected function AddPrintColumns(Grid $grid)
         {
             //
-            // View column for user_id field
-            //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddPrintColumn($column);
-            
-            //
             // View column for user_name field
             //
             $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
@@ -2815,6 +3423,73 @@
             // View column for dokumen_pas_foto field
             //
             $column = new DownloadDataColumn('dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for ppdb_id field
+            //
+            $column = new NumberViewColumn('ppdb_id', 'ppdb_id', 'Ppdb Id', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for hasil field
+            //
+            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for hasil_alasan field
+            //
+            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->SetMaxLength(75);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for penghasilan_orangtua field
+            //
+            $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for dokumen_ktp_ortu field
+            //
+            $column = new DownloadDataColumn('dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for dokumen_kelakuan_baik field
+            //
+            $column = new DownloadDataColumn('dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for dokumen_keterangan_kesehatan field
+            //
+            $column = new DownloadDataColumn('dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan', 'Dokumen Keterangan Kesehatan', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for dokumen_ijasah field
+            //
+            $column = new DownloadDataColumn('dokumen_ijasah', 'dokumen_ijasah', 'Dokumen Ijasah', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for dokumen_transkrip field
+            //
+            $column = new DownloadDataColumn('dokumen_transkrip', 'dokumen_transkrip', 'Dokumen Transkrip', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddPrintColumn($column);
         }
@@ -2822,16 +3497,6 @@
         protected function AddExportColumns(Grid $grid)
         {
             //
-            // View column for user_id field
-            //
-            $column = new NumberViewColumn('user_id', 'user_id', 'User Id', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setNumberAfterDecimal(0);
-            $column->setThousandsSeparator(',');
-            $column->setDecimalSeparator('');
-            $grid->AddExportColumn($column);
-            
-            //
             // View column for user_name field
             //
             $column = new TextViewColumn('user_name', 'user_name', 'User Name', $this->dataset);
@@ -3097,6 +3762,73 @@
             // View column for dokumen_pas_foto field
             //
             $column = new DownloadDataColumn('dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for ppdb_id field
+            //
+            $column = new NumberViewColumn('ppdb_id', 'ppdb_id', 'Ppdb Id', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for hasil field
+            //
+            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for hasil_alasan field
+            //
+            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->SetMaxLength(75);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for penghasilan_orangtua field
+            //
+            $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for dokumen_ktp_ortu field
+            //
+            $column = new DownloadDataColumn('dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for dokumen_kelakuan_baik field
+            //
+            $column = new DownloadDataColumn('dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for dokumen_keterangan_kesehatan field
+            //
+            $column = new DownloadDataColumn('dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan', 'Dokumen Keterangan Kesehatan', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for dokumen_ijasah field
+            //
+            $column = new DownloadDataColumn('dokumen_ijasah', 'dokumen_ijasah', 'Dokumen Ijasah', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for dokumen_transkrip field
+            //
+            $column = new DownloadDataColumn('dokumen_transkrip', 'dokumen_transkrip', 'Dokumen Transkrip', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddExportColumn($column);
         }
@@ -3371,6 +4103,73 @@
             $column = new DownloadDataColumn('dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddCompareColumn($column);
+            
+            //
+            // View column for ppdb_id field
+            //
+            $column = new NumberViewColumn('ppdb_id', 'ppdb_id', 'Ppdb Id', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for hasil field
+            //
+            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for hasil_alasan field
+            //
+            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->SetMaxLength(75);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for penghasilan_orangtua field
+            //
+            $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for dokumen_ktp_ortu field
+            //
+            $column = new DownloadDataColumn('dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for dokumen_kelakuan_baik field
+            //
+            $column = new DownloadDataColumn('dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for dokumen_keterangan_kesehatan field
+            //
+            $column = new DownloadDataColumn('dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan', 'Dokumen Keterangan Kesehatan', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for dokumen_ijasah field
+            //
+            $column = new DownloadDataColumn('dokumen_ijasah', 'dokumen_ijasah', 'Dokumen Ijasah', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for dokumen_transkrip field
+            //
+            $column = new DownloadDataColumn('dokumen_transkrip', 'dokumen_transkrip', 'Dokumen Transkrip', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
         }
     
         private function AddCompareHeaderColumns(Grid $grid)
@@ -3468,6 +4267,21 @@
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'dokumen_ktp_ortu_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'dokumen_kelakuan_baik_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ijasah', 'dokumen_ijasah_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_transkrip', 'dokumen_transkrip_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kk', 'dokumen_kk_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
@@ -3477,6 +4291,21 @@
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'dokumen_ktp_ortu_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'dokumen_kelakuan_baik_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ijasah', 'dokumen_ijasah_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_transkrip', 'dokumen_transkrip_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kk', 'dokumen_kk_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
@@ -3484,6 +4313,21 @@
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'dokumen_ktp_ortu_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'dokumen_kelakuan_baik_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ijasah', 'dokumen_ijasah_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_transkrip', 'dokumen_transkrip_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_kk', 'ppdb_users_dokumen_kk_handler_insert', new NullFilter());
@@ -3495,6 +4339,30 @@
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_pas_foto', 'ppdb_users_dokumen_pas_foto_handler_insert', new NullFilter());
             GetApplication()->RegisterHTTPHandler($handler);
             
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'ppdb_users_dokumen_ktp_ortu_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'ppdb_users_dokumen_kelakuan_baik_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'ppdb_users_dokumen_keterangan_kesehatan_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ijasah', 'ppdb_users_dokumen_ijasah_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_insert', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kk', 'dokumen_kk_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
@@ -3502,6 +4370,21 @@
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'dokumen_ktp_ortu_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'dokumen_kelakuan_baik_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'dokumen_keterangan_kesehatan_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_ijasah', 'dokumen_ijasah_handler', '', '', true);
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new DownloadHTTPHandler($this->dataset, 'dokumen_transkrip', 'dokumen_transkrip_handler', '', '', true);
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_kk', 'ppdb_users_dokumen_kk_handler_edit', new NullFilter());
@@ -3513,6 +4396,21 @@
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_pas_foto', 'ppdb_users_dokumen_pas_foto_handler_edit', new NullFilter());
             GetApplication()->RegisterHTTPHandler($handler);
             
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'ppdb_users_dokumen_ktp_ortu_handler_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'ppdb_users_dokumen_kelakuan_baik_handler_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'ppdb_users_dokumen_keterangan_kesehatan_handler_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ijasah', 'ppdb_users_dokumen_ijasah_handler_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_kk', 'ppdb_users_dokumen_kk_handler_multi_edit', new NullFilter());
             GetApplication()->RegisterHTTPHandler($handler);
             
@@ -3520,6 +4418,21 @@
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_pas_foto', 'ppdb_users_dokumen_pas_foto_handler_multi_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ktp_ortu', 'ppdb_users_dokumen_ktp_ortu_handler_multi_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_kelakuan_baik', 'ppdb_users_dokumen_kelakuan_baik_handler_multi_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_keterangan_kesehatan', 'ppdb_users_dokumen_keterangan_kesehatan_handler_multi_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ijasah', 'ppdb_users_dokumen_ijasah_handler_multi_edit', new NullFilter());
+            GetApplication()->RegisterHTTPHandler($handler);
+            
+            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_multi_edit', new NullFilter());
             GetApplication()->RegisterHTTPHandler($handler);
         }
        
