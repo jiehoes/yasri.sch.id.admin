@@ -45,6 +45,7 @@
             $this->dataset->addFields(
                 array(
                     new IntegerField('siswa_id', true, true, true),
+                    new StringField('pa_id'),
                     new StringField('kelas_id'),
                     new IntegerField('nis'),
                     new StringField('user_name', true),
@@ -110,7 +111,8 @@
         protected function getFiltersColumns()
         {
             return array(
-                new FilterColumn($this->dataset, 'kelas_id', 'kelas_id', 'Kelas Id'),
+                new FilterColumn($this->dataset, 'kelas_id', 'kelas_id', 'KELAS ID'),
+                new FilterColumn($this->dataset, 'pa_id', 'pa_id', 'PA ID'),
                 new FilterColumn($this->dataset, 'nis', 'nis', 'Nis'),
                 new FilterColumn($this->dataset, 'user_name', 'user_name', 'User Name'),
                 new FilterColumn($this->dataset, 'user_password', 'user_password', 'User Password'),
@@ -151,6 +153,7 @@
         {
             $quickFilter
                 ->addColumn($columns['kelas_id'])
+                ->addColumn($columns['pa_id'])
                 ->addColumn($columns['nis'])
                 ->addColumn($columns['user_name'])
                 ->addColumn($columns['user_email'])
@@ -188,6 +191,7 @@
         {
             $columnFilter
                 ->setOptionsFor('kelas_id')
+                ->setOptionsFor('pa_id')
                 ->setOptionsFor('jenis_kelamin')
                 ->setOptionsFor('tanggal_lahir')
                 ->setOptionsFor('tanggal_update')
@@ -214,6 +218,40 @@
             
             $filterBuilder->addColumn(
                 $columns['kelas_id'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $text_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $text_editor,
+                    FilterConditionOperator::BEGINS_WITH => $text_editor,
+                    FilterConditionOperator::ENDS_WITH => $text_editor,
+                    FilterConditionOperator::IS_LIKE => $text_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $text_editor,
+                    FilterConditionOperator::IN => $multi_value_select_editor,
+                    FilterConditionOperator::NOT_IN => $multi_value_select_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new ComboBox('pa_id_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $main_editor->addChoice('DKV', 'DKV');
+            $main_editor->addChoice('OTKP', 'OTKP');
+            $main_editor->SetAllowNullValue(false);
+            
+            $multi_value_select_editor = new MultiValueSelect('pa_id');
+            $multi_value_select_editor->setChoices($main_editor->getChoices());
+            
+            $text_editor = new TextEdit('pa_id');
+            
+            $filterBuilder->addColumn(
+                $columns['pa_id'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -908,7 +946,17 @@
             //
             // View column for kelas_id field
             //
-            $column = new TextViewColumn('kelas_id', 'kelas_id', 'Kelas Id', $this->dataset);
+            $column = new TextViewColumn('kelas_id', 'kelas_id', 'KELAS ID', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for pa_id field
+            //
+            $column = new TextViewColumn('pa_id', 'pa_id', 'PA ID', $this->dataset);
             $column->SetOrderable(true);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
@@ -1279,7 +1327,14 @@
             //
             // View column for kelas_id field
             //
-            $column = new TextViewColumn('kelas_id', 'kelas_id', 'Kelas Id', $this->dataset);
+            $column = new TextViewColumn('kelas_id', 'kelas_id', 'KELAS ID', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for pa_id field
+            //
+            $column = new TextViewColumn('pa_id', 'pa_id', 'PA ID', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddSingleRecordViewColumn($column);
             
@@ -1561,7 +1616,18 @@
             $editor->addChoice('X-OTKP', 'X-OTKP');
             $editor->addChoice('XI-OTKP', 'XI-OTKP');
             $editor->addChoice('XII-OTKP', 'XII-OTKP');
-            $editColumn = new CustomEditColumn('Kelas Id', 'kelas_id', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('KELAS ID', 'kelas_id', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for pa_id field
+            //
+            $editor = new ComboBox('pa_id_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('DKV', 'DKV');
+            $editor->addChoice('OTKP', 'OTKP');
+            $editColumn = new CustomEditColumn('PA ID', 'pa_id', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
@@ -1872,7 +1938,18 @@
             $editor->addChoice('X-OTKP', 'X-OTKP');
             $editor->addChoice('XI-OTKP', 'XI-OTKP');
             $editor->addChoice('XII-OTKP', 'XII-OTKP');
-            $editColumn = new CustomEditColumn('Kelas Id', 'kelas_id', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('KELAS ID', 'kelas_id', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for pa_id field
+            //
+            $editor = new ComboBox('pa_id_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('DKV', 'DKV');
+            $editor->addChoice('OTKP', 'OTKP');
+            $editColumn = new CustomEditColumn('PA ID', 'pa_id', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
@@ -2183,7 +2260,18 @@
             $editor->addChoice('X-OTKP', 'X-OTKP');
             $editor->addChoice('XI-OTKP', 'XI-OTKP');
             $editor->addChoice('XII-OTKP', 'XII-OTKP');
-            $editColumn = new CustomEditColumn('Kelas Id', 'kelas_id', $editor, $this->dataset);
+            $editColumn = new CustomEditColumn('KELAS ID', 'kelas_id', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for pa_id field
+            //
+            $editor = new ComboBox('pa_id_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
+            $editor->addChoice('DKV', 'DKV');
+            $editor->addChoice('OTKP', 'OTKP');
+            $editColumn = new CustomEditColumn('PA ID', 'pa_id', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
@@ -2493,7 +2581,14 @@
             //
             // View column for kelas_id field
             //
-            $column = new TextViewColumn('kelas_id', 'kelas_id', 'Kelas Id', $this->dataset);
+            $column = new TextViewColumn('kelas_id', 'kelas_id', 'KELAS ID', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for pa_id field
+            //
+            $column = new TextViewColumn('pa_id', 'pa_id', 'PA ID', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddPrintColumn($column);
             
@@ -2768,7 +2863,14 @@
             //
             // View column for kelas_id field
             //
-            $column = new TextViewColumn('kelas_id', 'kelas_id', 'Kelas Id', $this->dataset);
+            $column = new TextViewColumn('kelas_id', 'kelas_id', 'KELAS ID', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for pa_id field
+            //
+            $column = new TextViewColumn('pa_id', 'pa_id', 'PA ID', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddExportColumn($column);
             
@@ -3043,7 +3145,14 @@
             //
             // View column for kelas_id field
             //
-            $column = new TextViewColumn('kelas_id', 'kelas_id', 'Kelas Id', $this->dataset);
+            $column = new TextViewColumn('kelas_id', 'kelas_id', 'KELAS ID', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for pa_id field
+            //
+            $column = new TextViewColumn('pa_id', 'pa_id', 'PA ID', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddCompareColumn($column);
             

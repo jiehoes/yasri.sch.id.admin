@@ -67,7 +67,6 @@ function GetPageInfos()
     $result[] = array('caption' => 'Mata Ajaran', 'short_caption' => 'Mata Ajaran', 'filename' => 'ma.php', 'name' => 'ma', 'group_name' => 'Akademik', 'add_separator' => false, 'description' => '');
     $result[] = array('caption' => 'Mengajar', 'short_caption' => 'Mengajar', 'filename' => 'mengajar.php', 'name' => 'mengajar', 'group_name' => 'Akademik', 'add_separator' => false, 'description' => '');
     $result[] = array('caption' => 'Silabus', 'short_caption' => 'Silabus', 'filename' => 'silabus.php', 'name' => 'silabus', 'group_name' => 'Akademik', 'add_separator' => false, 'description' => '');
-    $result[] = array('caption' => 'Siswa', 'short_caption' => 'Siswa', 'filename' => 'siswa.php', 'name' => 'siswa', 'group_name' => 'Akademik', 'add_separator' => false, 'description' => '');
     $result[] = array('caption' => 'Tahun Ajaran', 'short_caption' => 'Tahun Ajaran', 'filename' => 'ta.php', 'name' => 'ta', 'group_name' => 'Administrator', 'add_separator' => false, 'description' => '');
     $result[] = array('caption' => 'Program Keahlian', 'short_caption' => 'Program Keahlian', 'filename' => 'pa.php', 'name' => 'pa', 'group_name' => 'Administrator', 'add_separator' => false, 'description' => '');
     $result[] = array('caption' => 'Admin', 'short_caption' => 'Admin Users', 'filename' => 'admin_users.php', 'name' => 'admin_users', 'group_name' => 'User', 'add_separator' => true, 'description' => '');

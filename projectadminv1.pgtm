@@ -17,7 +17,6 @@
     <DataSource name="kelas"/>
     <DataSource name="mengajar"/>
     <DataSource name="silabus"/>
-    <DataSource name="siswa"/>
     <DataSource name="admin_users"/>
     <DataSource name="guru_users"/>
     <DataSource name="ppdb_users"/>
@@ -411,219 +410,6 @@
         <RecordPermissions useRecordPermissions="false"/>
         <PartitionNavigators/>
       </Page>
-      <Page type="table" tableName="siswa" numberByDataSource="0" fileName="siswa" caption="Siswa" shortCaption="Siswa" groupName="Akademik" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
-        <BeforeGridText/>
-        <DetailedDescription/>
-        <ColumnPresentations>
-          <ColumnPresentation fieldName="user_id" caption="User Id" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="25"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="30"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kelas" caption="Kelas" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="alamat" caption="Alamat" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="60"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tgl_lahir" caption="Tgl Lahir" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="15"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="telp" caption="Telp" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="15"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="agama" caption="Agama" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="kelamin" caption="Kelamin" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="1"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tmp_lahir" caption="Tmp Lahir" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="20"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="tgl_input" caption="Tgl Input" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="15"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="sttb" caption="Sttb" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="nem" caption="Nem" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="10"/>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="wali" caption="Wali" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="textBox" maxLength="50"/>
-          </ColumnPresentation>
-        </ColumnPresentations>
-        <Columns>
-          <List>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </List>
-          <View>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </View>
-          <Edit>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </Edit>
-          <Insert>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </Insert>
-          <QuickFilter>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </QuickFilter>
-          <FilterBuilder>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </FilterBuilder>
-          <Print>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </Print>
-          <Export>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </Export>
-          <Compare>
-            <Column fieldName="user_id"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </Compare>
-          <MultiEdit>
-            <Column fieldName="user_id" visible="false"/>
-            <Column fieldName="nama"/>
-            <Column fieldName="kelas"/>
-            <Column fieldName="alamat"/>
-            <Column fieldName="tgl_lahir"/>
-            <Column fieldName="telp"/>
-            <Column fieldName="agama"/>
-            <Column fieldName="kelamin"/>
-            <Column fieldName="tmp_lahir"/>
-            <Column fieldName="tgl_input"/>
-            <Column fieldName="sttb"/>
-            <Column fieldName="nem"/>
-            <Column fieldName="wali"/>
-          </MultiEdit>
-        </Columns>
-        <Details/>
-        <RecordPermissions useRecordPermissions="false"/>
-        <PartitionNavigators/>
-      </Page>
       <Page type="table" tableName="ta" numberByDataSource="0" fileName="ta" caption="Tahun Ajaran" shortCaption="Tahun Ajaran" groupName="Administrator" addSeparator="false" horizontalFilterCondition="" recordsPerPage="20" NavigatorPosition="3" insertAbilityMode="1" viewAbilityMode="0" deleteAbilityMode="3" copyAbilityMode="0" deleteSelectedAbilityMode="3" contentEncoding="UTF-8" controlButtonsPosition="1" exportAllRecordsAvailable="7" exportSelectedRecordsAvailable="7" exportSingleRecordFromGridAvailable="0" exportRecordFromViewFormAvailable="7" printAvailable="13" highlightRowOnMouseHover="true" useActionImages="true" showKeyColumnsImagesInGridHeader="false" recordsComparisionAvailable="false">
         <BeforeGridText/>
         <DetailedDescription/>
@@ -695,51 +481,65 @@
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="pa" caption="Program Keahlian" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="pa" caption="PA" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="50"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="progran_ahli" caption="Progra Keahlian" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text" maxLength="75"/>
+            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
           </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
             <Column fieldName="pa_id"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </List>
           <View>
             <Column fieldName="pa_id"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </View>
           <Edit>
             <Column fieldName="pa_id" visible="false"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </Edit>
           <Insert>
             <Column fieldName="pa_id" visible="false"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </Insert>
           <QuickFilter>
             <Column fieldName="pa_id" visible="false"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="pa_id" visible="false"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </FilterBuilder>
           <Print>
             <Column fieldName="pa_id"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </Print>
           <Export>
             <Column fieldName="pa_id"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </Export>
           <Compare>
             <Column fieldName="pa_id" visible="false"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </Compare>
           <MultiEdit>
             <Column fieldName="pa_id" visible="false"/>
             <Column fieldName="pa"/>
+            <Column fieldName="progran_ahli"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -1297,7 +1097,7 @@
         <BeforeGridText/>
         <DetailedDescription/>
         <ColumnPresentations>
-          <ColumnPresentation fieldName="kelas_id" caption="Kelas Id" canSetNull="true" selectedFilterOperators="1589247">
+          <ColumnPresentation fieldName="kelas_id" caption="KELAS ID" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="comboBox">
               <Values>
@@ -1307,6 +1107,15 @@
                 <Value name="X-OTKP" caption="X-OTKP"/>
                 <Value name="XI-OTKP" caption="XI-OTKP"/>
                 <Value name="XII-OTKP" caption="XII-OTKP"/>
+              </Values>
+            </EditProperties>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="pa_id" caption="PA ID" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="comboBox">
+              <Values>
+                <Value name="DKV" caption="DKV"/>
+                <Value name="OTKP" caption="OTKP"/>
               </Values>
             </EditProperties>
           </ColumnPresentation>
@@ -1473,6 +1282,7 @@
         <Columns>
           <List>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1509,6 +1319,7 @@
           </List>
           <View>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1545,6 +1356,7 @@
           </View>
           <Edit>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1581,6 +1393,7 @@
           </Edit>
           <Insert>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1650,9 +1463,11 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="pa_id"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1689,6 +1504,7 @@
           </FilterBuilder>
           <Print>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1725,6 +1541,7 @@
           </Print>
           <Export>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1761,6 +1578,7 @@
           </Export>
           <Compare>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
@@ -1797,6 +1615,7 @@
           </Compare>
           <MultiEdit>
             <Column fieldName="kelas_id"/>
+            <Column fieldName="pa_id"/>
             <Column fieldName="nis"/>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
