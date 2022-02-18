@@ -45,7 +45,8 @@
             $this->dataset->addFields(
                 array(
                     new IntegerField('ta_id', true, true, true),
-                    new StringField('ta')
+                    new StringField('ta'),
+                    new IntegerField('angkatan')
                 )
             );
         }
@@ -79,7 +80,8 @@
         {
             return array(
                 new FilterColumn($this->dataset, 'ta_id', 'ta_id', 'ID'),
-                new FilterColumn($this->dataset, 'ta', 'ta', 'Tahun Ajaran')
+                new FilterColumn($this->dataset, 'ta', 'ta', 'Tahun Ajaran'),
+                new FilterColumn($this->dataset, 'angkatan', 'angkatan', 'Angkatan')
             );
         }
     
@@ -87,7 +89,8 @@
         {
             $quickFilter
                 ->addColumn($columns['ta_id'])
-                ->addColumn($columns['ta']);
+                ->addColumn($columns['ta'])
+                ->addColumn($columns['angkatan']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -135,6 +138,24 @@
                     FilterConditionOperator::ENDS_WITH => $main_editor,
                     FilterConditionOperator::IS_LIKE => $main_editor,
                     FilterConditionOperator::IS_NOT_LIKE => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('angkatan_edit');
+            
+            $filterBuilder->addColumn(
+                $columns['angkatan'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
                     FilterConditionOperator::IS_BLANK => null,
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
@@ -190,6 +211,19 @@
             $column->SetDescription('');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
         }
     
         protected function AddSingleRecordViewColumns(Grid $grid)
@@ -210,6 +244,16 @@
             $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddSingleRecordViewColumn($column);
         }
     
         protected function AddEditColumns(Grid $grid)
@@ -220,6 +264,15 @@
             $editor = new TextEdit('ta_edit');
             $editor->SetMaxLength(10);
             $editColumn = new CustomEditColumn('Tahun Ajaran', 'ta', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
@@ -236,6 +289,15 @@
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
         }
     
         protected function AddInsertColumns(Grid $grid)
@@ -246,6 +308,15 @@
             $editor = new TextEdit('ta_edit');
             $editor->SetMaxLength(10);
             $editColumn = new CustomEditColumn('Tahun Ajaran', 'ta', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
             $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
@@ -275,6 +346,16 @@
             $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddPrintColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
         }
     
         protected function AddExportColumns(Grid $grid)
@@ -295,6 +376,16 @@
             $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
             $grid->AddExportColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
         }
     
         private function AddCompareColumns(Grid $grid)
@@ -304,6 +395,16 @@
             //
             $column = new TextViewColumn('ta', 'ta', 'Tahun Ajaran', $this->dataset);
             $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
             $grid->AddCompareColumn($column);
         }
     

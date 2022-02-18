@@ -45,8 +45,8 @@
             $this->dataset->addFields(
                 array(
                     new IntegerField('ppdb_id', true, true, true),
-                    new StringField('hasil'),
-                    new StringField('hasil_alasan', true),
+                    new StringField('hasil_id'),
+                    new IntegerField('angkatan', true),
                     new StringField('user_name', true),
                     new StringField('user_password', true),
                     new StringField('user_email', true),
@@ -123,6 +123,8 @@
                 new FilterColumn($this->dataset, 'user_password', 'user_password', 'User Password'),
                 new FilterColumn($this->dataset, 'user_email', 'user_email', 'User Email'),
                 new FilterColumn($this->dataset, 'user_token', 'user_token', 'User Token'),
+                new FilterColumn($this->dataset, 'angkatan', 'angkatan', 'Angkatan'),
+                new FilterColumn($this->dataset, 'hasil_id', 'hasil_id', 'Hasil Id'),
                 new FilterColumn($this->dataset, 'nama', 'nama', 'Nama'),
                 new FilterColumn($this->dataset, 'jenis_kelamin', 'jenis_kelamin', 'Jenis Kelamin'),
                 new FilterColumn($this->dataset, 'pindah_sekolah', 'pindah_sekolah', 'Pindah Sekolah'),
@@ -154,8 +156,6 @@
                 new FilterColumn($this->dataset, 'dokumen_akte_kelahiran', 'dokumen_akte_kelahiran', 'Dokumen Akte Kelahiran'),
                 new FilterColumn($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto'),
                 new FilterColumn($this->dataset, 'ppdb_id', 'ppdb_id', 'Ppdb Id'),
-                new FilterColumn($this->dataset, 'hasil', 'hasil', 'Hasil'),
-                new FilterColumn($this->dataset, 'hasil_alasan', 'hasil_alasan', 'Hasil Alasan'),
                 new FilterColumn($this->dataset, 'penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua'),
                 new FilterColumn($this->dataset, 'dokumen_ktp_ortu', 'dokumen_ktp_ortu', 'Dokumen Ktp Ortu'),
                 new FilterColumn($this->dataset, 'dokumen_kelakuan_baik', 'dokumen_kelakuan_baik', 'Dokumen Kelakuan Baik'),
@@ -170,6 +170,8 @@
             $quickFilter
                 ->addColumn($columns['user_name'])
                 ->addColumn($columns['user_email'])
+                ->addColumn($columns['angkatan'])
+                ->addColumn($columns['hasil_id'])
                 ->addColumn($columns['nama'])
                 ->addColumn($columns['jenis_kelamin'])
                 ->addColumn($columns['pindah_sekolah'])
@@ -201,8 +203,6 @@
                 ->addColumn($columns['dokumen_akte_kelahiran'])
                 ->addColumn($columns['dokumen_pas_foto'])
                 ->addColumn($columns['ppdb_id'])
-                ->addColumn($columns['hasil'])
-                ->addColumn($columns['hasil_alasan'])
                 ->addColumn($columns['penghasilan_orangtua'])
                 ->addColumn($columns['dokumen_ktp_ortu'])
                 ->addColumn($columns['dokumen_kelakuan_baik'])
@@ -222,7 +222,6 @@
                 ->setOptionsFor('dokumen_kk')
                 ->setOptionsFor('dokumen_akte_kelahiran')
                 ->setOptionsFor('dokumen_pas_foto')
-                ->setOptionsFor('hasil')
                 ->setOptionsFor('penghasilan_orangtua')
                 ->setOptionsFor('dokumen_ktp_ortu')
                 ->setOptionsFor('dokumen_kelakuan_baik')
@@ -261,6 +260,49 @@
             
             $filterBuilder->addColumn(
                 $columns['user_email'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::CONTAINS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
+                    FilterConditionOperator::BEGINS_WITH => $main_editor,
+                    FilterConditionOperator::ENDS_WITH => $main_editor,
+                    FilterConditionOperator::IS_LIKE => $main_editor,
+                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('angkatan_edit');
+            
+            $filterBuilder->addColumn(
+                $columns['angkatan'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
+            
+            $main_editor = new TextEdit('hasil_id_edit');
+            $main_editor->SetMaxLength(50);
+            
+            $filterBuilder->addColumn(
+                $columns['hasil_id'],
                 array(
                     FilterConditionOperator::EQUALS => $main_editor,
                     FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
@@ -943,66 +985,6 @@
                 )
             );
             
-            $main_editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
-            $main_editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
-            $main_editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
-            $main_editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
-            $main_editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
-            $main_editor->SetAllowNullValue(false);
-            
-            $multi_value_select_editor = new MultiValueSelect('hasil');
-            $multi_value_select_editor->setChoices($main_editor->getChoices());
-            
-            $text_editor = new TextEdit('hasil');
-            
-            $filterBuilder->addColumn(
-                $columns['hasil'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $text_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $text_editor,
-                    FilterConditionOperator::BEGINS_WITH => $text_editor,
-                    FilterConditionOperator::ENDS_WITH => $text_editor,
-                    FilterConditionOperator::IS_LIKE => $text_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $text_editor,
-                    FilterConditionOperator::IN => $multi_value_select_editor,
-                    FilterConditionOperator::NOT_IN => $multi_value_select_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
-            $main_editor = new TextEdit('hasil_alasan');
-            
-            $filterBuilder->addColumn(
-                $columns['hasil_alasan'],
-                array(
-                    FilterConditionOperator::EQUALS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
-                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
-                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
-                    FilterConditionOperator::IS_BETWEEN => $main_editor,
-                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
-                    FilterConditionOperator::CONTAINS => $main_editor,
-                    FilterConditionOperator::DOES_NOT_CONTAIN => $main_editor,
-                    FilterConditionOperator::BEGINS_WITH => $main_editor,
-                    FilterConditionOperator::ENDS_WITH => $main_editor,
-                    FilterConditionOperator::IS_LIKE => $main_editor,
-                    FilterConditionOperator::IS_NOT_LIKE => $main_editor,
-                    FilterConditionOperator::IS_BLANK => null,
-                    FilterConditionOperator::IS_NOT_BLANK => null
-                )
-            );
-            
             $main_editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
             $main_editor->addChoice('Kurang dari 1juta/bulan', 'Kurang dari 1juta/bulan');
             $main_editor->addChoice('1juta-3juta/bulan', '1juta-3juta/bulan');
@@ -1134,6 +1116,29 @@
             $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
             $column->SetMaxLength(75);
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
+            
+            //
+            // View column for hasil_id field
+            //
+            $column = new TextViewColumn('hasil_id', 'hasil_id', 'Hasil Id', $this->dataset);
+            $column->SetOrderable(true);
             $column->setMinimalVisibility(ColumnVisibility::PHONE);
             $column->SetDescription('');
             $column->SetFixedWidth(null);
@@ -1496,27 +1501,6 @@
             $grid->AddViewColumn($column);
             
             //
-            // View column for hasil field
-            //
-            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
-            $column->SetOrderable(true);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
-            //
-            // View column for hasil_alasan field
-            //
-            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $column->setMinimalVisibility(ColumnVisibility::PHONE);
-            $column->SetDescription('');
-            $column->SetFixedWidth(null);
-            $grid->AddViewColumn($column);
-            
-            //
             // View column for penghasilan_orangtua field
             //
             $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
@@ -1593,6 +1577,23 @@
             $column = new TextViewColumn('user_email', 'user_email', 'User Email', $this->dataset);
             $column->SetOrderable(true);
             $column->SetMaxLength(75);
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for hasil_id field
+            //
+            $column = new TextViewColumn('hasil_id', 'hasil_id', 'Hasil Id', $this->dataset);
+            $column->SetOrderable(true);
             $grid->AddSingleRecordViewColumn($column);
             
             //
@@ -1859,21 +1860,6 @@
             $grid->AddSingleRecordViewColumn($column);
             
             //
-            // View column for hasil field
-            //
-            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
-            // View column for hasil_alasan field
-            //
-            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
-            $grid->AddSingleRecordViewColumn($column);
-            
-            //
             // View column for penghasilan_orangtua field
             //
             $column = new TextViewColumn('penghasilan_orangtua', 'penghasilan_orangtua', 'Penghasilan Orangtua', $this->dataset);
@@ -1935,6 +1921,26 @@
             $editColumn = new CustomEditColumn('User Email', 'user_email', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for hasil_id field
+            //
+            $editor = new TextEdit('hasil_id_edit');
+            $editor->SetMaxLength(50);
+            $editColumn = new CustomEditColumn('Hasil Id', 'hasil_id', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
             
@@ -2236,29 +2242,6 @@
             $grid->AddEditColumn($editColumn);
             
             //
-            // Edit column for hasil field
-            //
-            $editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
-            $editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
-            $editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
-            $editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
-            $editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
-            $editColumn = new CustomEditColumn('Hasil', 'hasil', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
-            // Edit column for hasil_alasan field
-            //
-            $editor = new TextAreaEdit('hasil_alasan_edit', 50, 8);
-            $editColumn = new CustomEditColumn('Hasil Alasan', 'hasil_alasan', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddEditColumn($editColumn);
-            
-            //
             // Edit column for penghasilan_orangtua field
             //
             $editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
@@ -2346,6 +2329,26 @@
             $editColumn = new CustomEditColumn('User Email', 'user_email', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for hasil_id field
+            //
+            $editor = new TextEdit('hasil_id_edit');
+            $editor->SetMaxLength(50);
+            $editColumn = new CustomEditColumn('Hasil Id', 'hasil_id', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddMultiEditColumn($editColumn);
             
@@ -2647,29 +2650,6 @@
             $grid->AddMultiEditColumn($editColumn);
             
             //
-            // Edit column for hasil field
-            //
-            $editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
-            $editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
-            $editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
-            $editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
-            $editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
-            $editColumn = new CustomEditColumn('Hasil', 'hasil', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
-            // Edit column for hasil_alasan field
-            //
-            $editor = new TextAreaEdit('hasil_alasan_edit', 50, 8);
-            $editColumn = new CustomEditColumn('Hasil Alasan', 'hasil_alasan', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddMultiEditColumn($editColumn);
-            
-            //
             // Edit column for penghasilan_orangtua field
             //
             $editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
@@ -2757,6 +2737,26 @@
             $editColumn = new CustomEditColumn('User Email', 'user_email', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for hasil_id field
+            //
+            $editor = new TextEdit('hasil_id_edit');
+            $editor->SetMaxLength(50);
+            $editColumn = new CustomEditColumn('Hasil Id', 'hasil_id', $editor, $this->dataset);
+            $editColumn->SetAllowSetToNull(true);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
             
@@ -3058,29 +3058,6 @@
             $grid->AddInsertColumn($editColumn);
             
             //
-            // Edit column for hasil field
-            //
-            $editor = new ComboBox('hasil_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
-            $editor->addChoice('Pendaftar dalam proses seleksi administrasi', 'Pendaftar dalam proses seleksi administrasi');
-            $editor->addChoice('Selamat! Pendaftar diterima di SMK YASRI', 'Selamat! Pendaftar diterima di SMK YASRI');
-            $editor->addChoice('Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu', 'Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu');
-            $editor->addChoice('Pendaftar tidak lolos pendaftaran di SMK YASRI', 'Pendaftar tidak lolos pendaftaran di SMK YASRI');
-            $editColumn = new CustomEditColumn('Hasil', 'hasil', $editor, $this->dataset);
-            $editColumn->SetAllowSetToNull(true);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
-            // Edit column for hasil_alasan field
-            //
-            $editor = new TextAreaEdit('hasil_alasan_edit', 50, 8);
-            $editColumn = new CustomEditColumn('Hasil Alasan', 'hasil_alasan', $editor, $this->dataset);
-            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
-            $editor->GetValidatorCollection()->AddValidator($validator);
-            $this->ApplyCommonColumnEditProperties($editColumn);
-            $grid->AddInsertColumn($editColumn);
-            
-            //
             // Edit column for penghasilan_orangtua field
             //
             $editor = new ComboBox('penghasilan_orangtua_edit', $this->GetLocalizerCaptions()->GetMessageString('PleaseSelect'));
@@ -3174,6 +3151,23 @@
             $grid->AddPrintColumn($column);
             
             //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
+            
+            //
+            // View column for hasil_id field
+            //
+            $column = new TextViewColumn('hasil_id', 'hasil_id', 'Hasil Id', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddPrintColumn($column);
+            
+            //
             // View column for nama field
             //
             $column = new TextViewColumn('nama', 'nama', 'Nama', $this->dataset);
@@ -3434,21 +3428,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for hasil field
-            //
-            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddPrintColumn($column);
-            
-            //
-            // View column for hasil_alasan field
-            //
-            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
             $grid->AddPrintColumn($column);
             
             //
@@ -3513,6 +3492,23 @@
             $grid->AddExportColumn($column);
             
             //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
+            
+            //
+            // View column for hasil_id field
+            //
+            $column = new TextViewColumn('hasil_id', 'hasil_id', 'Hasil Id', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddExportColumn($column);
+            
+            //
             // View column for nama field
             //
             $column = new TextViewColumn('nama', 'nama', 'Nama', $this->dataset);
@@ -3773,21 +3769,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for hasil field
-            //
-            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddExportColumn($column);
-            
-            //
-            // View column for hasil_alasan field
-            //
-            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
             $grid->AddExportColumn($column);
             
             //
@@ -3852,6 +3833,23 @@
             $grid->AddCompareColumn($column);
             
             //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for hasil_id field
+            //
+            $column = new TextViewColumn('hasil_id', 'hasil_id', 'Hasil Id', $this->dataset);
+            $column->SetOrderable(true);
+            $grid->AddCompareColumn($column);
+            
+            //
             // View column for nama field
             //
             $column = new TextViewColumn('nama', 'nama', 'Nama', $this->dataset);
@@ -4112,21 +4110,6 @@
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for hasil field
-            //
-            $column = new TextViewColumn('hasil', 'hasil', 'Hasil', $this->dataset);
-            $column->SetOrderable(true);
-            $grid->AddCompareColumn($column);
-            
-            //
-            // View column for hasil_alasan field
-            //
-            $column = new TextViewColumn('hasil_alasan', 'hasil_alasan', 'Hasil Alasan', $this->dataset);
-            $column->SetOrderable(true);
-            $column->SetMaxLength(75);
             $grid->AddCompareColumn($column);
             
             //
@@ -4349,9 +4332,6 @@
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_ijasah', 'ppdb_users_dokumen_ijasah_handler_insert', new NullFilter());
-            GetApplication()->RegisterHTTPHandler($handler);
-            
-            $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_insert', new NullFilter());
             GetApplication()->RegisterHTTPHandler($handler);
             
             $handler = new ImageHTTPHandler($this->dataset, 'dokumen_transkrip', 'ppdb_users_dokumen_transkrip_handler_insert', new NullFilter());

@@ -45,6 +45,7 @@
             $this->dataset->addFields(
                 array(
                     new IntegerField('siswa_id', true, true, true),
+                    new IntegerField('angkatan', true),
                     new StringField('pa_id'),
                     new StringField('kelas_id'),
                     new IntegerField('nis'),
@@ -145,7 +146,8 @@
                 new FilterColumn($this->dataset, 'dokumen_kk', 'dokumen_kk', 'Dokumen Kk'),
                 new FilterColumn($this->dataset, 'dokumen_akte_kelahiran', 'dokumen_akte_kelahiran', 'Dokumen Akte Kelahiran'),
                 new FilterColumn($this->dataset, 'dokumen_pas_foto', 'dokumen_pas_foto', 'Dokumen Pas Foto'),
-                new FilterColumn($this->dataset, 'siswa_id', 'siswa_id', 'Siswa Id')
+                new FilterColumn($this->dataset, 'siswa_id', 'siswa_id', 'Siswa Id'),
+                new FilterColumn($this->dataset, 'angkatan', 'angkatan', 'Angkatan')
             );
         }
     
@@ -184,7 +186,8 @@
                 ->addColumn($columns['dokumen_kk'])
                 ->addColumn($columns['dokumen_akte_kelahiran'])
                 ->addColumn($columns['dokumen_pas_foto'])
-                ->addColumn($columns['siswa_id']);
+                ->addColumn($columns['siswa_id'])
+                ->addColumn($columns['angkatan']);
         }
     
         protected function setupColumnFilter(ColumnFilter $columnFilter)
@@ -914,6 +917,24 @@
                     FilterConditionOperator::IS_NOT_BLANK => null
                 )
             );
+            
+            $main_editor = new TextEdit('angkatan_edit');
+            
+            $filterBuilder->addColumn(
+                $columns['angkatan'],
+                array(
+                    FilterConditionOperator::EQUALS => $main_editor,
+                    FilterConditionOperator::DOES_NOT_EQUAL => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN => $main_editor,
+                    FilterConditionOperator::IS_GREATER_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN => $main_editor,
+                    FilterConditionOperator::IS_LESS_THAN_OR_EQUAL_TO => $main_editor,
+                    FilterConditionOperator::IS_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_NOT_BETWEEN => $main_editor,
+                    FilterConditionOperator::IS_BLANK => null,
+                    FilterConditionOperator::IS_NOT_BLANK => null
+                )
+            );
         }
     
         protected function AddOperationsColumns(Grid $grid)
@@ -1320,6 +1341,19 @@
             $column->SetDescription('');
             $column->SetFixedWidth(null);
             $grid->AddViewColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $column->setMinimalVisibility(ColumnVisibility::PHONE);
+            $column->SetDescription('');
+            $column->SetFixedWidth(null);
+            $grid->AddViewColumn($column);
         }
     
         protected function AddSingleRecordViewColumns(Grid $grid)
@@ -1597,6 +1631,16 @@
             // View column for siswa_id field
             //
             $column = new NumberViewColumn('siswa_id', 'siswa_id', 'Siswa Id', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddSingleRecordViewColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');
@@ -1924,6 +1968,16 @@
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddEditColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddEditColumn($editColumn);
         }
     
         protected function AddMultiEditColumns(Grid $grid)
@@ -2242,6 +2296,16 @@
             //
             $editor = new TextEdit('siswa_id_edit');
             $editColumn = new CustomEditColumn('Siswa Id', 'siswa_id', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddMultiEditColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
             $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
@@ -2568,6 +2632,16 @@
             $editor->GetValidatorCollection()->AddValidator($validator);
             $this->ApplyCommonColumnEditProperties($editColumn);
             $grid->AddInsertColumn($editColumn);
+            
+            //
+            // Edit column for angkatan field
+            //
+            $editor = new TextEdit('angkatan_edit');
+            $editColumn = new CustomEditColumn('Angkatan', 'angkatan', $editor, $this->dataset);
+            $validator = new RequiredValidator(StringUtils::Format($this->GetLocalizerCaptions()->GetMessageString('RequiredValidationMessage'), $editColumn->GetCaption()));
+            $editor->GetValidatorCollection()->AddValidator($validator);
+            $this->ApplyCommonColumnEditProperties($editColumn);
+            $grid->AddInsertColumn($editColumn);
             $grid->SetShowAddButton(true && $this->GetSecurityInfo()->HasAddGrant());
         }
     
@@ -2856,6 +2930,16 @@
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
             $grid->AddPrintColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddPrintColumn($column);
         }
     
         protected function AddExportColumns(Grid $grid)
@@ -3138,6 +3222,16 @@
             $column->setThousandsSeparator(',');
             $column->setDecimalSeparator('');
             $grid->AddExportColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddExportColumn($column);
         }
     
         private function AddCompareColumns(Grid $grid)
@@ -3415,6 +3509,16 @@
             // View column for siswa_id field
             //
             $column = new NumberViewColumn('siswa_id', 'siswa_id', 'Siswa Id', $this->dataset);
+            $column->SetOrderable(true);
+            $column->setNumberAfterDecimal(0);
+            $column->setThousandsSeparator(',');
+            $column->setDecimalSeparator('');
+            $grid->AddCompareColumn($column);
+            
+            //
+            // View column for angkatan field
+            //
+            $column = new NumberViewColumn('angkatan', 'angkatan', 'Angkatan', $this->dataset);
             $column->SetOrderable(true);
             $column->setNumberAfterDecimal(0);
             $column->setThousandsSeparator(',');

@@ -424,47 +424,63 @@
             <ViewProperties type="text"/>
             <EditProperties type="textBox" maxLength="10"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="angkatan" caption="Angkatan" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
             <Column fieldName="ta_id"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </List>
           <View>
             <Column fieldName="ta_id"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </View>
           <Edit>
             <Column fieldName="ta_id" visible="false"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </Edit>
           <Insert>
             <Column fieldName="ta_id" visible="false"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </Insert>
           <QuickFilter>
             <Column fieldName="ta_id"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="ta_id"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </FilterBuilder>
           <Print>
             <Column fieldName="ta_id"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </Print>
           <Export>
             <Column fieldName="ta_id"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </Export>
           <Compare>
             <Column fieldName="ta_id" visible="false"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </Compare>
           <MultiEdit>
             <Column fieldName="ta_id" visible="false"/>
             <Column fieldName="ta"/>
+            <Column fieldName="angkatan"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -1278,6 +1294,12 @@
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
+          <ColumnPresentation fieldName="angkatan" caption="Angkatan" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
         </ColumnPresentations>
         <Columns>
           <List>
@@ -1316,6 +1338,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </List>
           <View>
             <Column fieldName="kelas_id"/>
@@ -1353,6 +1376,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </View>
           <Edit>
             <Column fieldName="kelas_id"/>
@@ -1390,6 +1414,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </Edit>
           <Insert>
             <Column fieldName="kelas_id"/>
@@ -1427,6 +1452,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </Insert>
           <QuickFilter>
             <Column fieldName="kelas_id"/>
@@ -1464,6 +1490,7 @@
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
             <Column fieldName="pa_id"/>
+            <Column fieldName="angkatan"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="kelas_id"/>
@@ -1501,6 +1528,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </FilterBuilder>
           <Print>
             <Column fieldName="kelas_id"/>
@@ -1538,6 +1566,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </Print>
           <Export>
             <Column fieldName="kelas_id"/>
@@ -1575,6 +1604,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </Export>
           <Compare>
             <Column fieldName="kelas_id"/>
@@ -1612,6 +1642,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </Compare>
           <MultiEdit>
             <Column fieldName="kelas_id"/>
@@ -1649,6 +1680,7 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="siswa_id"/>
+            <Column fieldName="angkatan"/>
           </MultiEdit>
         </Columns>
         <Details/>
@@ -1674,6 +1706,16 @@
           <ColumnPresentation fieldName="user_token" caption="User Token" headerHint="Token for user account verification or user password reset." showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
             <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="angkatan" caption="Angkatan" showColumnFilter="false" selectedFilterOperators="1573119">
+            <ViewProperties type="text">
+              <Format type="number" thousandSeparator=","/>
+            </ViewProperties>
+            <EditProperties type="textBox" maxLength="0"/>
+          </ColumnPresentation>
+          <ColumnPresentation fieldName="hasil_id" caption="Hasil Id" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
+            <ViewProperties type="text"/>
+            <EditProperties type="textBox" maxLength="50"/>
           </ColumnPresentation>
           <ColumnPresentation fieldName="nama" caption="Nama" showColumnFilter="false" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text" maxLength="75"/>
@@ -1837,21 +1879,6 @@
             </ViewProperties>
             <EditProperties type="textBox" maxLength="0"/>
           </ColumnPresentation>
-          <ColumnPresentation fieldName="hasil" caption="Hasil" canSetNull="true" selectedFilterOperators="1589247">
-            <ViewProperties type="text"/>
-            <EditProperties type="comboBox">
-              <Values>
-                <Value name="Pendaftar dalam proses seleksi administrasi" caption="Pendaftar dalam proses seleksi administrasi"/>
-                <Value name="Selamat! Pendaftar diterima di SMK YASRI" caption="Selamat! Pendaftar diterima di SMK YASRI"/>
-                <Value name="Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu" caption="Pendaftar dipertimbangkan diterima di SMK YASRI dengan persyaratan tertentu"/>
-                <Value name="Pendaftar tidak lolos pendaftaran di SMK YASRI" caption="Pendaftar tidak lolos pendaftaran di SMK YASRI"/>
-              </Values>
-            </EditProperties>
-          </ColumnPresentation>
-          <ColumnPresentation fieldName="hasil_alasan" caption="Hasil Alasan" showColumnFilter="false" selectedFilterOperators="1589247">
-            <ViewProperties type="text" maxLength="75"/>
-            <EditProperties type="textArea" columnCount="50" rowCount="8" placeholder=""/>
-          </ColumnPresentation>
           <ColumnPresentation fieldName="penghasilan_orangtua" caption="Penghasilan Orangtua" canSetNull="true" selectedFilterOperators="1589247">
             <ViewProperties type="text"/>
             <EditProperties type="comboBox">
@@ -1890,6 +1917,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -1921,8 +1950,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -1935,6 +1962,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -1966,8 +1995,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -1980,6 +2007,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2011,8 +2040,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -2025,6 +2052,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2056,8 +2085,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -2101,20 +2128,22 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
             <Column fieldName="dokumen_keterangan_kesehatan"/>
             <Column fieldName="dokumen_ijasah"/>
             <Column fieldName="dokumen_transkrip"/>
+            <Column fieldName="hasil_id"/>
+            <Column fieldName="angkatan"/>
           </QuickFilter>
           <FilterBuilder>
             <Column fieldName="user_name"/>
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2146,8 +2175,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -2160,6 +2187,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2191,8 +2220,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -2205,6 +2232,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2236,8 +2265,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -2250,6 +2277,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2281,8 +2310,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
@@ -2295,6 +2322,8 @@
             <Column fieldName="user_password" visible="false"/>
             <Column fieldName="user_email"/>
             <Column fieldName="user_token" visible="false"/>
+            <Column fieldName="angkatan"/>
+            <Column fieldName="hasil_id"/>
             <Column fieldName="nama"/>
             <Column fieldName="jenis_kelamin"/>
             <Column fieldName="pindah_sekolah"/>
@@ -2326,8 +2355,6 @@
             <Column fieldName="dokumen_akte_kelahiran"/>
             <Column fieldName="dokumen_pas_foto"/>
             <Column fieldName="ppdb_id"/>
-            <Column fieldName="hasil"/>
-            <Column fieldName="hasil_alasan"/>
             <Column fieldName="penghasilan_orangtua"/>
             <Column fieldName="dokumen_ktp_ortu"/>
             <Column fieldName="dokumen_kelakuan_baik"/>
